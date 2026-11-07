@@ -3,6 +3,7 @@ import { MessageCircle, Phone, MapPin, ArrowUp, Snowflake, Heart } from 'lucide-
 import { BRAND_CONFIG, SOCIAL_LINKS } from '../data/brand';
 import { PRODUCTS } from '../data/products';
 import { useCart } from '../hooks/useCart';
+import { LobboLogo } from './LobboLogo';
 
 export const Footer: React.FC = () => {
   const { openQuickView } = useCart();
@@ -29,20 +30,10 @@ export const Footer: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-white/10">
-          {/* Brand Identity Col */}
+          {/* Brand Identity Col with Authentic Bottle Logo */}
           <div className="lg:col-span-4 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-[#EF4329] flex items-center justify-center text-white font-black text-lg shadow-md shadow-[#EF4329]/30">
-                L
-              </div>
-              <div>
-                <span className="font-heading font-black text-2xl tracking-tight text-white block leading-none">
-                  {BRAND_CONFIG.name}
-                </span>
-                <span className="text-[10px] font-bold tracking-[0.22em] text-[#EF4329] uppercase mt-0.5 block">
-                  Serve Chilled
-                </span>
-              </div>
+            <div className="inline-block bg-[#FFF8EF] p-2.5 px-3 rounded-2xl shadow-md border border-[#F2C7A9]/40">
+              <LobboLogo className="h-12 w-auto" variant="color" />
             </div>
 
             <p className="text-xs sm:text-sm text-[#FFF8EF]/75 leading-relaxed max-w-sm">
@@ -172,4 +163,3 @@ export const Footer: React.FC = () => {
     </footer>
   );
 };
-

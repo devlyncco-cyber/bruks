@@ -1,14 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 100" fill="none">
-  <!-- Outer Brand Ellipse -->
-  <ellipse cx="120" cy="54" rx="98" ry="40" stroke="#EF4329" stroke-width="4.5" fill="none" />
-  
-  <!-- Stylized Brand Leaves at Top -->
-  <path d="M117 14 C117 14 110 5 99 9 C92 12 94 22 104 22 C114 22 117 14 117 14Z" fill="#EF4329" />
-  <path d="M123 14 C123 14 130 5 141 9 C148 12 146 22 136 22 C126 22 123 14 123 14Z" fill="#EF4329" />
-  <circle cx="120" cy="14" r="3" fill="#EF4329" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 100" fill="none">
+  <!-- Outer Oval Contour matching bottle packaging -->
+  <ellipse cx="110" cy="56" rx="88" ry="36" stroke="#EF4329" stroke-width="4.5" fill="none" />
 
-  <!-- Brand Typography -->
-  <text x="120" y="58" font-family="'Plus Jakarta Sans', 'Poppins', sans-serif" font-weight="900" font-size="34" fill="#EF4329" text-anchor="middle" letter-spacing="1.5">LOBBO</text>
-  <text x="120" y="78" font-family="'Inter', 'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12.5" fill="#512719" text-anchor="middle" letter-spacing="3.2">BEVERAGES</text>
+  <!-- Top Center Leaves Motif -->
+  <!-- Left Leaf -->
+  <path d="M109 20 C106 11 95 6 88 10 C83 14 85 22 95 22 C103 22 108 20 109 20 Z" fill="#EF4329" />
+  <!-- Right Leaf -->
+  <path d="M111 20 C114 11 125 6 132 10 C137 14 135 22 125 22 C117 22 112 20 111 20 Z" fill="#EF4329" />
+  <!-- Leaf Stem Base -->
+  <path d="M108 20 Q110 22 112 20 Q110 18 108 20 Z" fill="#EF4329" />
+
+  <!-- "LOBBO" Brand Text -->
+  <text x="110" y="60" fill="#EF4329" font-family="'Plus Jakarta Sans', 'Poppins', sans-serif" font-weight="900" font-size="33" letter-spacing="1.2" text-anchor="middle">LOBBO</text>
+
+  <!-- "Beverages" Subtext -->
+  <text x="110" y="77" fill="#EF4329" font-family="'Inter', 'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12.5" letter-spacing="0.8" text-anchor="middle">Beverages</text>
 </svg>
-
