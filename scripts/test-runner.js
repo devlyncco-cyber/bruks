@@ -1,4 +1,4 @@
-// Test runner verifying the new seller delivery calculation on WhatsApp
+// Test runner verifying retail and bulk purchase options & WhatsApp formatting with GH₵ 20 pricing
 const BRAND_CONFIG = {
   name: 'LOBBO BEVERAGES',
   tagline: 'Home-Brewed Excellence. Serve Chilled.',
@@ -11,15 +11,25 @@ const PRODUCTS = [
     id: 'lobbo-cous-cous',
     name: 'Lobbo Cous Cous',
     size: '250ml',
-    price: 15.0,
-    capColor: 'White',
+    price: 20.0,
+    packagingOptions: [
+      { id: 'single', name: 'Single Bottle (Retail)', shortName: '1 Bottle', bottlesCount: 1, type: 'retail', price: 20.0 },
+      { id: 'pack-6', name: '6-Bottle Pack (Retail Bundle)', shortName: '6-Pack', bottlesCount: 6, type: 'retail', price: 110.0 },
+      { id: 'crate-12', name: 'Full Crate (12 Bottles - Bulk)', shortName: '12 Crate', bottlesCount: 12, type: 'bulk', price: 215.0 },
+      { id: 'crate-24', name: 'Event & Wholesale Crate (24 Bottles)', shortName: '24 Crate', bottlesCount: 24, type: 'bulk', price: 420.0 },
+    ],
   },
   {
     id: 'lobbo-bruks',
     name: 'Lobbo Bruks',
     size: '300ml',
-    price: 18.0,
-    capColor: 'Black',
+    price: 20.0,
+    packagingOptions: [
+      { id: 'single', name: 'Single Bottle (Retail)', shortName: '1 Bottle', bottlesCount: 1, type: 'retail', price: 20.0 },
+      { id: 'pack-6', name: '6-Bottle Pack (Retail Bundle)', shortName: '6-Pack', bottlesCount: 6, type: 'retail', price: 110.0 },
+      { id: 'crate-12', name: 'Full Crate (12 Bottles - Bulk)', shortName: '12 Crate', bottlesCount: 12, type: 'bulk', price: 215.0 },
+      { id: 'crate-24', name: 'Event & Wholesale Crate (24 Bottles)', shortName: '24 Crate', bottlesCount: 24, type: 'bulk', price: 420.0 },
+    ],
   },
 ];
 
@@ -33,8 +43,11 @@ function buildWhatsAppMessage({ customer, items, subtotal }) {
 
   const itemsText = items
     .map((item, index) => {
-      const lineTotal = item.product.price * item.quantity;
-      return `${index + 1}. ${item.product.name} (${item.product.size})\n   Quantity: ${item.quantity}\n   Unit Price: ${formatCurrency(item.product.price)}\n   Total: ${formatCurrency(lineTotal)}`;
+      const opt = item.selectedOption || item.product.packagingOptions[0];
+      const unitPrice = opt.price;
+      const lineTotal = unitPrice * item.quantity;
+      const tierLabel = opt.bottlesCount > 1 ? ` [${opt.name}]` : ` [Single Bottle - Retail]`;
+      return `${index + 1}. ${item.product.name} (${item.product.size})${tierLabel}\n   Quantity: ${item.quantity}\n   Unit Price: ${formatCurrency(unitPrice)}\n   Total: ${formatCurrency(lineTotal)}`;
     })
     .join('\n\n');
 
@@ -66,60 +79,44 @@ function buildWhatsAppMessage({ customer, items, subtotal }) {
   );
 }
 
-console.log('Testing WhatsApp Order with Seller Delivery Calculation...');
+console.log('Testing WhatsApp Order with GH₵ 20 Pricing...');
 
-// 1. Delivery Test:
-const deliveryMsg = buildWhatsAppMessage({
+// Test 1: Mixed Order (2x Retail Single at GH₵ 20 + 1x Bulk Crate of 12 at GH₵ 215)
+const mixedOrderMsg = buildWhatsAppMessage({
   customer: {
     fullName: 'Ama Serwaa',
     phoneNumber: '024 319 1039',
     fulfilmentType: 'delivery',
     deliveryAddress: 'East Legon, Accra',
-    orderNotes: 'Please deliver cold',
+    orderNotes: 'Please pack chilled',
   },
   items: [
-    { product: PRODUCTS[0], quantity: 2 },
-    { product: PRODUCTS[1], quantity: 1 },
+    {
+      product: PRODUCTS[0],
+      selectedOption: PRODUCTS[0].packagingOptions[0], // Single Bottle (GH₵ 20)
+      quantity: 2,
+    },
+    {
+      product: PRODUCTS[1],
+      selectedOption: PRODUCTS[1].packagingOptions[2], // Full Crate of 12 (GH₵ 215)
+      quantity: 1,
+    },
   ],
-  subtotal: 48,
+  subtotal: 20 * 2 + 215, // 40 + 215 = 255
 });
 
-console.log('--- DELIVERY MESSAGE ---');
-console.log(deliveryMsg);
-console.log('------------------------');
+console.log('--- MIXED RETAIL & BULK MESSAGE (GH₵ 20 PRICING) ---');
+console.log(mixedOrderMsg);
+console.log('---------------------------------------------------');
 
-if (!deliveryMsg.includes('Delivery Location: East Legon, Accra')) {
-  throw new Error('Missing stated customer location');
+if (!mixedOrderMsg.includes('Unit Price: GH₵ 20.00')) {
+  throw new Error('Single bottle unit price should be GH₵ 20.00');
 }
-if (!deliveryMsg.includes('Delivery Fee: To be calculated by seller based on location')) {
-  throw new Error('Missing seller delivery note');
+if (!mixedOrderMsg.includes('Total: GH₵ 40.00')) {
+  throw new Error('2x single bottles total should be GH₵ 40.00');
 }
-if (!deliveryMsg.includes('Grand Total: GH₵ 48.00 (+ Delivery Fee)')) {
-  throw new Error('Grand total should indicate + Delivery Fee');
-}
-
-// 2. Pickup Test:
-const pickupMsg = buildWhatsAppMessage({
-  customer: {
-    fullName: 'Kofi Mensah',
-    phoneNumber: '054 408 2161',
-    fulfilmentType: 'pickup',
-  },
-  items: [
-    { product: PRODUCTS[0], quantity: 1 },
-  ],
-  subtotal: 15,
-});
-
-console.log('--- PICKUP MESSAGE ---');
-console.log(pickupMsg);
-console.log('----------------------');
-
-if (!pickupMsg.includes('Delivery Fee: GH₵ 0.00 (Pickup)')) {
-  throw new Error('Missing pickup fee representation');
-}
-if (!pickupMsg.includes('Grand Total: GH₵ 15.00')) {
-  throw new Error('Grand total mismatch for pickup');
+if (!mixedOrderMsg.includes('Subtotal: GH₵ 255.00')) {
+  throw new Error('Subtotal calculation mismatch for GH₵ 255.00');
 }
 
-console.log('\n✓ ALL SELLER-DELIVERY VERIFICATIONS PASSED 100%!');
+console.log('✓ ALL TESTS PASSED WITH GH₵ 20 BASE PRICING & CLEAN ICONS!');

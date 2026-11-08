@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PRODUCTS } from '../data/products';
 import { ProductCard } from './ProductCard';
-import { Sparkles, Snowflake, PackageCheck, Zap } from 'lucide-react';
+import { Sparkles, Snowflake, PackageCheck, Zap, ShoppingCart, Package } from 'lucide-react';
 import { useCart } from '../hooks/useCart';
 import { formatCurrency } from '../utils/currency';
 
 export const ProductSection: React.FC = () => {
   const { addToCart, openCheckout } = useCart();
+  const [filterType, setFilterType] = useState<'all' | 'retail' | 'bulk'>('all');
 
   const handleAddTastingDuo = () => {
     PRODUCTS.forEach((p) => {
-      addToCart(p, 1);
+      // Add single bottle of each
+      addToCart(p, 1, p.packagingOptions[0]);
     });
     openCheckout();
   };
@@ -21,7 +23,7 @@ export const ProductSection: React.FC = () => {
     <section id="products" className="py-20 md:py-28 bg-[#FFF8EF] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F5E9D9] border border-[#F2C7A9] shadow-sm mb-4">
             <Sparkles className="w-4 h-4 text-[#EF4329]" />
             <span className="text-xs font-bold uppercase tracking-wider text-[#512719]">
@@ -34,14 +36,59 @@ export const ProductSection: React.FC = () => {
           </h2>
 
           <p className="text-base sm:text-lg text-[#512719]/80 font-normal leading-relaxed">
-            Two unique handcrafted recipes. Brewed with care, bottled fresh, and best enjoyed chilled to revive your spirit.
+            Two distinctive home-brewed recipes. Available in individual retail bottles or money-saving crates for events, offices, and celebrations.
           </p>
+        </div>
+
+        {/* Retail vs Bulk Filter Pills */}
+        <div className="flex items-center justify-center gap-2 sm:gap-3 mb-12 flex-wrap">
+          <button
+            type="button"
+            onClick={() => setFilterType('all')}
+            className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all shadow-sm ${
+              filterType === 'all'
+                ? 'bg-[#512719] text-white shadow-md'
+                : 'bg-white text-[#512719] border border-[#F2C7A9] hover:bg-[#F5E9D9]'
+            }`}
+          >
+            All Packaging Options
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setFilterType('retail')}
+            className={`inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-xs font-bold transition-all shadow-sm ${
+              filterType === 'retail'
+                ? 'bg-[#EF4329] text-white shadow-md'
+                : 'bg-white text-[#512719] border border-[#F2C7A9] hover:bg-[#F5E9D9]'
+            }`}
+          >
+            <ShoppingCart className="w-3.5 h-3.5" />
+            <span>Retail (1 & 6 Bottles)</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setFilterType('bulk')}
+            className={`inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-xs font-bold transition-all shadow-sm ${
+              filterType === 'bulk'
+                ? 'bg-[#EF4329] text-white shadow-md'
+                : 'bg-white text-[#512719] border border-[#F2C7A9] hover:bg-[#F5E9D9]'
+            }`}
+          >
+            <Package className="w-3.5 h-3.5" />
+            <span>Bulk Crates (12 & 24 Bottles)</span>
+          </button>
         </div>
 
         {/* Product Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto">
           {PRODUCTS.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard
+              key={`${product.id}-${filterType}`}
+              product={product}
+              initialType={filterType === 'bulk' ? 'bulk' : 'retail'}
+            />
           ))}
         </div>
 
@@ -57,7 +104,7 @@ export const ProductSection: React.FC = () => {
                   Can't decide? Try Both!
                 </span>
                 <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-[#EF4329] text-white">
-                  Popular
+                  Retail Duo
                 </span>
               </div>
               <h3 className="font-heading font-black text-xl sm:text-2xl text-[#512719] mt-0.5">
@@ -88,15 +135,17 @@ export const ProductSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Serve Chilled Reminder Strip */}
+        {/* Serve Chilled & Bulk Prompt Strip */}
         <div className="mt-12 flex flex-wrap items-center justify-center gap-6 sm:gap-12 text-[#512719]/75 text-xs sm:text-sm font-semibold">
           <div className="flex items-center gap-2">
             <Snowflake className="w-4 h-4 text-[#EF4329]" />
             <span>Store below 5°C</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#EF4329]" />
-            <span>Shake gently before serving</span>
+            <Package className="w-4 h-4 text-[#EF4329]" />
+            <a href="#bulk" className="text-[#EF4329] hover:underline">
+              Planning a party or event? Check our bulk crate rates &rarr;
+            </a>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-[#EF4329]" />
@@ -107,4 +156,3 @@ export const ProductSection: React.FC = () => {
     </section>
   );
 };
-

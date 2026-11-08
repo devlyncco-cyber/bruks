@@ -25,14 +25,14 @@ All product specifications and prices are managed centrally in `src/data/product
 
 1. **Lobbo Cous Cous**
    - **Size**: 250ml
-   - **Price**: GH₵ 15.00
+   - **Price**: GH₵ 20.00
    - **Bottle**: White cap seal, smooth creamy off-white beverage
    - **Accent**: Lobbo Orange-Red
    - **Labels**: Home-Brewed, Serve Chilled, 250ml
 
 2. **Lobbo Bruks**
    - **Size**: 300ml
-   - **Price**: GH₵ 18.00
+   - **Price**: GH₵ 20.00
    - **Bottle**: Black cap seal, creamy beverage with distinctive spiced/textured flakes
    - **Accent**: Deep Chocolate Brown
    - **Labels**: Home-Brewed, Serve Chilled, 300ml
@@ -42,7 +42,15 @@ All product specifications and prices are managed centrally in `src/data/product
 ## 🛒 Features & Architecture
 
 - **Interactive Hero Showcase**: Interactive bottle switch between Cous Cous and Bruks with ambient glow, badges, and quick-add buttons.
-- **Product Catalogue**: Responsive grid, quantity controls, quick view modal with tasting notes, and a one-click tasting duo bundle.
+- **Product Catalogue with Retail & Bulk Options**:
+  - Interactive packaging switcher on each card and Quick View modal:
+    - **Single Bottle (Retail)**: GH₵ 20.00
+    - **6-Bottle Pack (Retail Bundle)**: GH₵ 110.00 (Save GH₵ 10.00)
+    - **Full Crate (12 Bottles - Bulk)**: GH₵ 215.00 (Save GH₵ 25.00)
+    - **Event Crate (24 Bottles - Wholesale)**: GH₵ 420.00 (Save GH₵ 60.00)
+  - Live unit price breakdown (`~GH₵ 13.33 / bottle`) and dynamic savings badges.
+  - Dedicated **Bulk Purchases & Retail Orders** showcase with transparent pricing matrix and 1-click WhatsApp event inquiries.
+  - One-click tasting duo bundle.
 - **Full Slide-Out Cart Drawer**:
   - Live item count badge in the navbar and floating sticky cart button.
   - Increment/decrement quantity controls with live line-item and subtotal calculation.

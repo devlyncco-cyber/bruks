@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Trash2, Plus, Minus, ShoppingBag, ArrowRight, Truck, Store, Snowflake, MapPin } from 'lucide-react';
+import { X, Trash2, Plus, Minus, ShoppingBag, ArrowRight, Truck, Store, Snowflake, MapPin, Package } from 'lucide-react';
 import { useCart } from '../hooks/useCart';
 import { formatCurrency } from '../utils/currency';
 
@@ -13,6 +13,7 @@ export const CartDrawer: React.FC = () => {
     clearCart,
     subtotal,
     totalItems,
+    totalBottles,
     fulfilmentType,
     setFulfilmentType,
     openCheckout,
@@ -41,7 +42,7 @@ export const CartDrawer: React.FC = () => {
                   Your Refreshment Cart
                 </h3>
                 <span className="text-xs font-bold text-[#EF4329]">
-                  {totalItems} {totalItems === 1 ? 'item' : 'items'}
+                  {totalItems} {totalItems === 1 ? 'item' : 'items'} • {totalBottles} bottles total
                 </span>
               </div>
             </div>
@@ -79,32 +80,41 @@ export const CartDrawer: React.FC = () => {
                   Your cart is empty
                 </h4>
                 <p className="text-xs sm:text-sm text-[#512719]/70 max-w-xs mb-6">
-                  Ready to refresh your day? Choose from our handcrafted Lobbo Cous Cous or Lobbo Bruks.
+                  Ready to refresh your day? Choose from our handcrafted Lobbo Cous Cous or Lobbo Bruks in retail bottles or bulk crates.
                 </p>
                 <button
                   type="button"
                   onClick={closeCart}
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#EF4329] hover:bg-[#D4341C] text-white font-bold text-xs shadow-md shadow-[#EF4329]/20 transition-all"
                 >
-                  <span>Explore Our Drinks</span>
+                  <span>Explore Drinks & Crates</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
             ) : (
               items.map((item) => {
-                const lineTotal = item.product.price * item.quantity;
+                const opt = item.selectedOption || item.product.packagingOptions[0];
+                const unitPrice = opt.price;
+                const lineTotal = unitPrice * item.quantity;
+                const isBulk = opt.type === 'bulk';
+
                 return (
                   <div
-                    key={item.product.id}
+                    key={item.id}
                     className="p-4 rounded-2xl bg-white border border-[#F2C7A9]/70 shadow-sm flex gap-4 items-center"
                   >
                     {/* Bottle thumbnail */}
-                    <div className="w-16 h-20 rounded-xl bg-[#191513] p-1.5 flex items-center justify-center shrink-0 border border-black/10">
+                    <div className="w-16 h-20 rounded-xl bg-[#191513] p-1.5 flex items-center justify-center shrink-0 border border-black/10 relative">
                       <img
                         src={item.product.image}
                         alt={item.product.name}
                         className="max-h-full w-auto object-contain"
                       />
+                      {isBulk && (
+                        <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-[#EF4329] text-white text-[9px] font-black flex items-center justify-center shadow-sm">
+                          <Package className="w-3 h-3" />
+                        </span>
+                      )}
                     </div>
 
                     {/* Meta & quantity controls */}
@@ -114,13 +124,16 @@ export const CartDrawer: React.FC = () => {
                           <h4 className="font-heading font-extrabold text-sm text-[#512719] truncate">
                             {item.product.name}
                           </h4>
-                          <span className="text-[11px] font-bold text-[#EF4329]">
-                            {item.product.size} • {item.product.capColor} Cap
+                          <span className="text-[11px] font-bold text-[#EF4329] block">
+                            {opt.name}
+                          </span>
+                          <span className="text-[10px] text-[#512719]/60 font-semibold">
+                            {opt.bottlesCount * item.quantity} bottles total ({item.product.size} each)
                           </span>
                         </div>
                         <button
                           type="button"
-                          onClick={() => removeFromCart(item.product.id)}
+                          onClick={() => removeFromCart(item.id)}
                           className="text-[#512719]/40 hover:text-red-500 p-1 transition-colors"
                           aria-label={`Remove ${item.product.name}`}
                         >
@@ -133,7 +146,7 @@ export const CartDrawer: React.FC = () => {
                         <div className="flex items-center bg-[#FFF8EF] border border-[#F2C7A9] rounded-full p-0.5">
                           <button
                             type="button"
-                            onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
+                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
                             className="w-6 h-6 rounded-full flex items-center justify-center text-[#512719] hover:bg-[#F5E9D9]"
                             aria-label="Decrease quantity"
                           >
@@ -144,7 +157,7 @@ export const CartDrawer: React.FC = () => {
                           </span>
                           <button
                             type="button"
-                            onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
+                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
                             className="w-6 h-6 rounded-full flex items-center justify-center text-[#512719] hover:bg-[#F5E9D9]"
                             aria-label="Increase quantity"
                           >
@@ -158,7 +171,7 @@ export const CartDrawer: React.FC = () => {
                             {formatCurrency(lineTotal)}
                           </span>
                           <span className="block text-[10px] text-[#512719]/60">
-                            {formatCurrency(item.product.price)} each
+                            {formatCurrency(unitPrice)} each
                           </span>
                         </div>
                       </div>
@@ -209,7 +222,9 @@ export const CartDrawer: React.FC = () => {
               {/* Order breakdown */}
               <div className="space-y-2 text-xs text-[#512719]/80 pt-2 border-t border-[#F2C7A9]/40">
                 <div className="flex justify-between items-center">
-                  <span>Drinks Subtotal</span>
+                  <span>
+                    Drinks Subtotal ({totalBottles} {totalBottles === 1 ? 'bottle' : 'bottles'})
+                  </span>
                   <span className="font-bold text-[#512719]">{formatCurrency(subtotal)}</span>
                 </div>
 
@@ -249,7 +264,7 @@ export const CartDrawer: React.FC = () => {
               {/* Chilled Notice */}
               <div className="flex items-center justify-center gap-1.5 text-[11px] font-semibold text-[#512719]/70 bg-[#FFF8EF] p-2 rounded-xl border border-[#F2C7A9]/60">
                 <Snowflake className="w-3.5 h-3.5 text-[#EF4329]" />
-                <span>Orders are packed ice-cold right before dispatch</span>
+                <span>Retail bottles & bulk crates are packed ice-cold</span>
               </div>
 
               {/* Checkout Button */}

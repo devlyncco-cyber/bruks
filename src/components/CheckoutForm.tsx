@@ -176,17 +176,26 @@ export const CheckoutForm: React.FC = () => {
                 </button>
               </div>
 
-              <div className="space-y-1.5 text-xs text-[#512719]/80 divide-y divide-[#F2C7A9]/30">
-                {items.map((item) => (
-                  <div key={item.product.id} className="pt-1.5 flex justify-between items-center">
-                    <span>
-                      {item.quantity}× {item.product.name} ({item.product.size})
-                    </span>
-                    <span className="font-bold text-[#512719]">
-                      {formatCurrency(item.product.price * item.quantity)}
-                    </span>
-                  </div>
-                ))}
+              <div className="space-y-2 text-xs text-[#512719]/80 divide-y divide-[#F2C7A9]/30">
+                {items.map((item) => {
+                  const opt = item.selectedOption || item.product.packagingOptions[0];
+                  const lineTotal = opt.price * item.quantity;
+                  return (
+                    <div key={item.id} className="pt-2 flex justify-between items-center">
+                      <div>
+                        <span className="font-bold text-[#512719]">
+                          {item.quantity}× {item.product.name}
+                        </span>
+                        <span className="block text-[11px] text-[#EF4329]">
+                          {opt.name} • {opt.bottlesCount * item.quantity} bottles total
+                        </span>
+                      </div>
+                      <span className="font-bold text-[#512719]">
+                        {formatCurrency(lineTotal)}
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
 
               {/* Delivery Fee Notice in Box */}

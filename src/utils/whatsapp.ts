@@ -11,8 +11,8 @@ export interface GenerateWhatsAppOrderParams {
 }
 
 /**
- * Builds the formatted WhatsApp order message where the seller calculates
- * the delivery fee on WhatsApp based on the customer's stated location.
+ * Builds the formatted WhatsApp order message supporting both retail and bulk purchases,
+ * where the seller calculates the delivery fee on WhatsApp based on the customer's stated location.
  */
 export function buildWhatsAppMessage({
   customer,
@@ -22,11 +22,14 @@ export function buildWhatsAppMessage({
   const isDelivery = customer.fulfilmentType === 'delivery';
   const fulfilmentLabel = isDelivery ? 'Delivery' : 'Pickup';
 
-  // Format the items list
+  // Format the items list with packaging tier details (Retail vs Bulk crates)
   const itemsText = items
     .map((item, index) => {
-      const lineTotal = item.product.price * item.quantity;
-      return `${index + 1}. ${item.product.name} (${item.product.size})\n   Quantity: ${item.quantity}\n   Unit Price: ${formatCurrency(item.product.price)}\n   Total: ${formatCurrency(lineTotal)}`;
+      const opt = item.selectedOption || item.product.packagingOptions[0];
+      const unitPrice = opt ? opt.price : item.product.price;
+      const lineTotal = unitPrice * item.quantity;
+      const tierLabel = opt && opt.bottlesCount > 1 ? ` [${opt.name}]` : ` [Single Bottle - Retail]`;
+      return `${index + 1}. ${item.product.name} (${item.product.size})${tierLabel}\n   Quantity: ${item.quantity}\n   Unit Price: ${formatCurrency(unitPrice)}\n   Total: ${formatCurrency(lineTotal)}`;
     })
     .join('\n\n');
 
@@ -59,6 +62,14 @@ export function buildWhatsAppMessage({
     `${notesText}\n\n` +
     `Thank you!`
   );
+}
+
+/**
+ * Builds a direct inquiry message for custom event/wholesale bulk purchases
+ */
+export function buildBulkInquiryUrl(productName?: string): string {
+  const base = `Hello Lobbo Beverages!\n\nI am inquiring about a Bulk / Wholesale order for ${productName || 'Lobbo Beverages'}.\n\nEstimated Bottles Needed: [e.g. 50+ / 100+ bottles]\nOccasion: [e.g. Wedding / Party / Store Retail / Event]\nLocation: [City / Area in Ghana]\n\nPlease share your wholesale availability and delivery arrangement. Thank you!`;
+  return `https://wa.me/${BRAND_CONFIG.whatsappNumber}?text=${encodeURIComponent(base)}`;
 }
 
 /**

@@ -20,6 +20,7 @@ export const Navbar: React.FC = () => {
   const navLinks = [
     { label: 'Home', href: '#home' },
     { label: 'Our Products', href: '#products' },
+    { label: 'Bulk & Retail', href: '#bulk' },
     { label: 'About Us', href: '#about' },
     { label: 'Why Lobbo', href: '#why-lobbo' },
     { label: 'Contact', href: '#contact' },

@@ -2,6 +2,7 @@ import React from 'react';
 import { Navbar } from '../components/Navbar';
 import { Hero } from '../components/Hero';
 import { ProductSection } from '../components/ProductSection';
+import { BulkSection } from '../components/BulkSection';
 import { AboutSection } from '../components/AboutSection';
 import { WhyChooseLobbo } from '../components/WhyChooseLobbo';
 import { PromoBanner } from '../components/PromoBanner';
@@ -26,6 +27,9 @@ export const Home: React.FC = () => {
 
         {/* Product Catalogue */}
         <ProductSection />
+
+        {/* Bulk Purchases & Retail Section */}
+        <BulkSection />
 
         {/* About Lobbo Beverages */}
         <AboutSection />
@@ -52,4 +56,3 @@ export const Home: React.FC = () => {
     </div>
   );
 };
-

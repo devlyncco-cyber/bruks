@@ -1,5 +1,5 @@
 import React from 'react';
-import { Award, Droplets, Smile, Heart, CheckCircle2 } from 'lucide-react';
+import { Award, Droplets, Smile, Heart, CheckCircle2, Sparkles } from 'lucide-react';
 import { PRODUCTS } from '../data/products';
 
 export const AboutSection: React.FC = () => {
@@ -97,8 +97,8 @@ export const AboutSection: React.FC = () => {
 
               {/* Floating Experience Badge */}
               <div className="absolute -bottom-6 -left-4 sm:left-6 bg-[#FFF8EF] border border-[#F2C7A9] rounded-2xl p-4 shadow-xl flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#EF4329] flex items-center justify-center text-white font-extrabold text-lg">
-                  ★
+                <div className="w-10 h-10 rounded-xl bg-[#EF4329] flex items-center justify-center text-white shadow-md shadow-[#EF4329]/20">
+                  <Sparkles className="w-5 h-5 text-white" />
                 </div>
                 <div>
                   <p className="text-xs font-extrabold text-[#512719]">Home-Brewed Perfection</p>
