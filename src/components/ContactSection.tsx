@@ -96,7 +96,7 @@ export const ContactSection: React.FC = () => {
                 </span>
                 <p className="text-sm font-bold text-[#512719] truncate">{BRAND_CONFIG.displayPhone}</p>
                 {BRAND_CONFIG.displayPhoneAlt && (
-                  <p className="text-xs text-[#512719]/70 font-medium">Alt: {BRAND_CONFIG.displayPhoneAlt}</p>
+                  <p className="text-sm font-bold text-[#512719] truncate">{BRAND_CONFIG.displayPhoneAlt}</p>
                 )}
               </div>
             </div>

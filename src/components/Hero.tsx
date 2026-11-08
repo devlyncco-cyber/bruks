@@ -83,16 +83,6 @@ export const Hero: React.FC = () => {
                 <span>Explore Our Drinks</span>
                 <ArrowRight className="w-5 h-5" />
               </a>
-
-              <a
-                href={BRAND_CONFIG.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#FFF8EF] hover:bg-[#F5E9D9] text-[#512719] font-bold text-sm sm:text-base px-6 sm:px-7 py-3.5 sm:py-4 rounded-full border border-[#F2C7A9] shadow-sm hover:shadow transition-all duration-200"
-              >
-                <MessageCircle className="w-5 h-5 text-[#25D366]" />
-                <span>Order on WhatsApp</span>
-              </a>
             </div>
 
             {/* Trust / Value Badges (Responsive layout prevents squished text) */}
@@ -177,25 +167,6 @@ export const Hero: React.FC = () => {
                       {activeProduct.bottleAppearance}
                     </p>
                   </div>
-
-                  <button
-                    type="button"
-                    onClick={() => handleHeroAdd(activeProduct)}
-                    className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-full font-bold text-xs bg-[#EF4329] hover:bg-[#D4341C] text-[#FFF8EF] transition-all shadow-md active:scale-95 shrink-0"
-                    aria-label={`Add ${activeProduct.name} to cart`}
-                  >
-                    {justAdded === activeProduct.id ? (
-                      <>
-                        <Check className="w-4 h-4" />
-                        <span>Added!</span>
-                      </>
-                    ) : (
-                      <>
-                        <Plus className="w-4 h-4" />
-                        <span>Add GH₵ {activeProduct.price}</span>
-                      </>
-                    )}
-                  </button>
                 </div>
               </div>
 

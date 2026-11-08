@@ -21,7 +21,7 @@ export const PRODUCTS: Product[] = [
       {
         id: 'pack-6',
         name: '6-Bottle Pack (Retail Bundle)',
-        shortName: '6-Pack',
+        shortName: '6 Bottles',
         bottlesCount: 6,
         type: 'retail',
         price: 110.0,
@@ -31,7 +31,7 @@ export const PRODUCTS: Product[] = [
       {
         id: 'crate-12',
         name: 'Full Crate (12 Bottles - Bulk)',
-        shortName: '12 Crate',
+        shortName: '12 Bottles (1 Pack)',
         bottlesCount: 12,
         type: 'bulk',
         price: 215.0,
@@ -42,7 +42,7 @@ export const PRODUCTS: Product[] = [
       {
         id: 'crate-24',
         name: 'Event & Wholesale Crate (24 Bottles)',
-        shortName: '24 Crate',
+        shortName: '24 Bottles (Special Pack)',
         bottlesCount: 24,
         type: 'bulk',
         price: 420.0,
@@ -84,7 +84,7 @@ export const PRODUCTS: Product[] = [
       {
         id: 'pack-6',
         name: '6-Bottle Pack (Retail Bundle)',
-        shortName: '6-Pack',
+        shortName: '6 Bottles',
         bottlesCount: 6,
         type: 'retail',
         price: 110.0,
@@ -94,7 +94,7 @@ export const PRODUCTS: Product[] = [
       {
         id: 'crate-12',
         name: 'Full Crate (12 Bottles - Bulk)',
-        shortName: '12 Crate',
+        shortName: '12 Bottles (1 Pack)',
         bottlesCount: 12,
         type: 'bulk',
         price: 215.0,
@@ -105,7 +105,7 @@ export const PRODUCTS: Product[] = [
       {
         id: 'crate-24',
         name: 'Event & Wholesale Crate (24 Bottles)',
-        shortName: '24 Crate',
+        shortName: '24 Bottles (Special Pack)',
         bottlesCount: 24,
         type: 'bulk',
         price: 420.0,

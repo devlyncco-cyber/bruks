@@ -146,7 +146,7 @@ export const Footer: React.FC = () => {
             <span>© {new Date().getFullYear()} {BRAND_CONFIG.name}. All rights reserved.</span>
             <span className="hidden sm:inline">•</span>
             <span className="hidden sm:inline flex items-center gap-1">
-              Home-brewed with <Heart className="w-3 h-3 text-[#EF4329] fill-[#EF4329]" /> in Ghana
+              Developed by <a href="https://devlync.unaux.com" target="_blank" className="text-[#FFF8EF]/70 hover:text-[#EF4329] transition-colors">Devlync</a>
             </span>
           </p>
 

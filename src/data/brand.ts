@@ -21,7 +21,5 @@ export interface SocialLink {
 }
 
 export const SOCIAL_LINKS: SocialLink[] = [
-  { name: 'WhatsApp', href: 'https://wa.me/233243191039' },
-  { name: 'Instagram', href: 'https://instagram.com' },
-  { name: 'Facebook', href: 'https://facebook.com' },
+  { name: 'WhatsApp', href: 'https://wa.me/233243191039'},
 ];

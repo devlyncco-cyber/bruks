@@ -87,7 +87,7 @@ export const BulkSection: React.FC = () => {
                 </li>
                 <li className="flex items-center gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Save on 6-pack bundles (GH₵ 110 per 6-pack)</span>
+                  <span>Save on 6-pack bundles (GH₵ 110 per pack)</span>
                 </li>
                 <li className="flex items-center gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
