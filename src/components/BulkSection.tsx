@@ -106,17 +106,15 @@ export const BulkSection: React.FC = () => {
           </div>
 
           {/* 2. Bulk & Wholesale Channel */}
-          <div className="bg-gradient-to-br from-[#191513] to-[#2A2421] text-white rounded-3xl p-8 shadow-xl flex flex-col justify-between card-hover-lift relative overflow-hidden border-2 border-[#EF4329]">
-            {/* Top highlight ribbon */}
-            <div className="absolute top-4 right-4">
-              <span className="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#EF4329] text-white shadow-md">
-                Save Up To GH₵ 60
-              </span>
-            </div>
-
+          <div className="bg-gradient-to-br from-[#191513] to-[#2A2421] text-white rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col justify-between card-hover-lift relative overflow-hidden border-2 border-[#EF4329]">
             <div className="relative z-10">
-              <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-[#EF4329] mb-4">
-                <Package className="w-6 h-6" />
+              <div className="flex items-center justify-between flex-wrap gap-2 mb-4">
+                <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-[#EF4329]">
+                  <Package className="w-6 h-6" />
+                </div>
+                <span className="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#EF4329] text-white shadow-md">
+                  Save Up To GH₵ 60
+                </span>
               </div>
 
               <h3 className="font-heading font-extrabold text-2xl text-[#FFF8EF] mb-2">
@@ -168,8 +166,8 @@ export const BulkSection: React.FC = () => {
         </div>
 
         {/* Transparent Pricing Matrix Table */}
-        <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#F2C7A9]/80 shadow-md mb-14">
-          <div className="flex items-center justify-between flex-wrap gap-4 mb-6">
+        <div className="bg-white rounded-3xl p-5 sm:p-8 border border-[#F2C7A9]/80 shadow-md mb-14">
+          <div className="flex items-center justify-between flex-wrap gap-4 mb-4">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-[#EF4329] flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-[#EF4329]" />
@@ -184,8 +182,12 @@ export const BulkSection: React.FC = () => {
             </span>
           </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs sm:text-sm">
+          <p className="text-[11px] text-[#512719]/60 sm:hidden mb-2">
+            Scroll horizontally to view all packaging tiers &rarr;
+          </p>
+
+          <div className="overflow-x-auto -mx-1 sm:mx-0">
+            <table className="w-full text-left text-xs sm:text-sm min-w-[620px]">
               <thead>
                 <tr className="border-b border-[#F2C7A9] text-[#512719] font-heading font-extrabold">
                   <th className="pb-3 px-3">Beverage</th>

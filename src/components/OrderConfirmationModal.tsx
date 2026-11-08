@@ -42,7 +42,7 @@ export const OrderConfirmationModal: React.FC<OrderConfirmationModalProps> = ({
       <div className="fixed inset-0 bg-[#191513]/60 backdrop-blur-sm" onClick={onClose} />
 
       {/* Modal Card */}
-      <div className="relative bg-[#FFF8EF] border border-[#F2C7A9] rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl z-10 my-8">
+      <div className="relative bg-[#FFF8EF] border border-[#F2C7A9] rounded-3xl max-w-xl w-full p-5 sm:p-8 shadow-2xl z-10 my-auto max-h-[90vh] overflow-y-auto">
         {/* Success Icon */}
         <div className="w-16 h-16 rounded-full bg-[#EBF9F1] border border-[#25D366]/40 flex items-center justify-center text-[#25D366] mx-auto mb-4">
           <CheckCircle2 className="w-9 h-9" />
@@ -61,30 +61,36 @@ export const OrderConfirmationModal: React.FC<OrderConfirmationModalProps> = ({
         </div>
 
         {/* Formatted Order Message Preview */}
-        <div className="bg-white border border-[#F2C7A9]/80 rounded-2xl p-4 mb-6 shadow-inner relative max-h-56 overflow-y-auto">
-          <pre className="text-xs text-[#512719] font-mono whitespace-pre-wrap leading-relaxed">
-            {orderText}
-          </pre>
+        <div className="mb-6">
+          <div className="flex items-center justify-between gap-2 mb-2">
+            <span className="text-xs font-bold text-[#512719]">
+              Message Sent to WhatsApp:
+            </span>
+            <button
+              type="button"
+              onClick={handleCopy}
+              className="px-3 py-1.5 rounded-lg bg-[#F5E9D9] hover:bg-[#F2C7A9] text-[#512719] text-xs font-bold flex items-center gap-1.5 shadow-sm transition-all"
+              title="Copy message to clipboard"
+            >
+              {copied ? (
+                <>
+                  <Check className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>Copied!</span>
+                </>
+              ) : (
+                <>
+                  <Copy className="w-3.5 h-3.5 text-[#512719]" />
+                  <span>Copy Message</span>
+                </>
+              )}
+            </button>
+          </div>
 
-          {/* Copy Button */}
-          <button
-            type="button"
-            onClick={handleCopy}
-            className="sticky top-0 float-right mb-2 ml-2 px-3 py-1.5 rounded-lg bg-[#F5E9D9] hover:bg-[#F2C7A9] text-[#512719] text-xs font-bold flex items-center gap-1.5 shadow-sm transition-all"
-            title="Copy message to clipboard"
-          >
-            {copied ? (
-              <>
-                <Check className="w-3.5 h-3.5 text-emerald-600" />
-                <span>Copied!</span>
-              </>
-            ) : (
-              <>
-                <Copy className="w-3.5 h-3.5 text-[#512719]" />
-                <span>Copy Message</span>
-              </>
-            )}
-          </button>
+          <div className="bg-white border border-[#F2C7A9]/80 rounded-2xl p-4 shadow-inner max-h-52 overflow-y-auto">
+            <pre className="text-xs text-[#512719] font-mono whitespace-pre-wrap leading-relaxed">
+              {orderText}
+            </pre>
+          </div>
         </div>
 
         {/* WhatsApp Link Redirection Re-trigger */}

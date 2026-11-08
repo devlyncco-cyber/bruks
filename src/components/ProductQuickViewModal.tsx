@@ -45,20 +45,20 @@ export const ProductQuickViewModal: React.FC = () => {
       />
 
       {/* Modal Card */}
-      <div className="relative bg-[#FFF8EF] border border-[#F2C7A9] rounded-3xl max-w-3xl w-full p-6 sm:p-8 shadow-2xl z-10 overflow-hidden my-8">
+      <div className="relative bg-[#FFF8EF] border border-[#F2C7A9] rounded-3xl max-w-3xl w-full p-5 sm:p-8 shadow-2xl z-10 my-auto max-h-[90vh] overflow-y-auto">
         {/* Close Button */}
         <button
           type="button"
           onClick={closeQuickView}
-          className="absolute top-5 right-5 p-2 rounded-full bg-[#F5E9D9] hover:bg-[#F2C7A9] text-[#512719] transition-colors focus:outline-none"
+          className="absolute top-4 right-4 sm:top-5 sm:right-5 p-2 rounded-full bg-[#F5E9D9] hover:bg-[#F2C7A9] text-[#512719] transition-colors focus:outline-none z-20"
           aria-label="Close product details modal"
         >
           <X className="w-5 h-5" />
         </button>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-center">
           {/* Product Image Stage */}
-          <div className="md:col-span-5 bg-gradient-to-b from-[#191513] to-[#25201D] rounded-2xl p-6 flex items-center justify-center min-h-[300px] relative overflow-hidden border border-[#512719]/20">
+          <div className="md:col-span-5 bg-gradient-to-b from-[#191513] to-[#25201D] rounded-2xl p-6 flex items-center justify-center min-h-[220px] sm:min-h-[300px] relative overflow-hidden border border-[#512719]/20">
             {/* Ambient Glow */}
             <div
               className="absolute inset-0 opacity-40 blur-xl pointer-events-none"
@@ -210,7 +210,7 @@ export const ProductQuickViewModal: React.FC = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
                 <button
                   type="button"
                   onClick={handleAddToCart}

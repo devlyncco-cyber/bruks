@@ -45,20 +45,20 @@ export const AboutSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Visual Side: Side-by-side Bottles in Framed Composition */}
-          <div className="lg:col-span-6 relative">
+          <div className="lg:col-span-6 relative pb-4 sm:pb-6 lg:pb-0">
             <div className="relative mx-auto max-w-md lg:max-w-none">
               {/* Main Card Frame */}
-              <div className="bg-[#191513] rounded-3xl p-6 sm:p-8 shadow-2xl border-4 border-[#FFF8EF] relative overflow-hidden">
+              <div className="bg-[#191513] rounded-3xl p-5 sm:p-8 shadow-2xl border-4 border-[#FFF8EF] relative overflow-hidden">
                 <div
                   className="absolute inset-0 opacity-20 bg-[radial-gradient(#EF4329_1px,transparent_1px)] [background-size:16px_16px]"
                   aria-hidden="true"
                 />
 
                 {/* Two bottles side by side */}
-                <div className="grid grid-cols-2 gap-4 relative z-10 items-end justify-center py-4">
+                <div className="grid grid-cols-2 gap-3 sm:gap-4 relative z-10 items-end justify-center py-4">
                   {/* Cous Cous */}
                   <div className="flex flex-col items-center">
-                    <div className="h-64 sm:h-72 flex items-center justify-center">
+                    <div className="h-56 sm:h-72 flex items-center justify-center">
                       <img
                         src={PRODUCTS[0].image}
                         alt="Lobbo Cous Cous"
@@ -66,14 +66,14 @@ export const AboutSection: React.FC = () => {
                         loading="lazy"
                       />
                     </div>
-                    <span className="mt-3 text-xs font-black uppercase text-[#EF4329] tracking-wider">
+                    <span className="mt-2.5 sm:mt-3 text-[11px] sm:text-xs font-black uppercase text-[#EF4329] tracking-wider text-center">
                       Cous Cous (250ml)
                     </span>
                   </div>
 
                   {/* Bruks */}
                   <div className="flex flex-col items-center">
-                    <div className="h-64 sm:h-72 flex items-center justify-center">
+                    <div className="h-56 sm:h-72 flex items-center justify-center">
                       <img
                         src={PRODUCTS[1].image}
                         alt="Lobbo Bruks"
@@ -81,23 +81,23 @@ export const AboutSection: React.FC = () => {
                         loading="lazy"
                       />
                     </div>
-                    <span className="mt-3 text-xs font-black uppercase text-[#F2C7A9] tracking-wider">
+                    <span className="mt-2.5 sm:mt-3 text-[11px] sm:text-xs font-black uppercase text-[#F2C7A9] tracking-wider text-center">
                       Bruks (300ml)
                     </span>
                   </div>
                 </div>
 
                 {/* Bottom Card Ribbon */}
-                <div className="mt-4 pt-3 border-t border-white/10 text-center">
-                  <p className="text-xs font-bold text-[#FFF8EF] uppercase tracking-widest">
+                <div className="mt-3 sm:mt-4 pt-3 border-t border-white/10 text-center">
+                  <p className="text-[11px] sm:text-xs font-bold text-[#FFF8EF] uppercase tracking-widest">
                     Crafted in Ghana • Enjoy Chilled
                   </p>
                 </div>
               </div>
 
-              {/* Floating Experience Badge */}
-              <div className="absolute -bottom-6 -left-4 sm:left-6 bg-[#FFF8EF] border border-[#F2C7A9] rounded-2xl p-4 shadow-xl flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#EF4329] flex items-center justify-center text-white shadow-md shadow-[#EF4329]/20">
+              {/* Experience Badge - Responsive non-overlapping positioning */}
+              <div className="mt-4 sm:mt-0 sm:absolute sm:-bottom-6 sm:left-6 bg-[#FFF8EF] border border-[#F2C7A9] rounded-2xl p-3.5 sm:p-4 shadow-xl flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-[#EF4329] flex items-center justify-center text-white shrink-0 shadow-md shadow-[#EF4329]/20">
                   <Sparkles className="w-5 h-5 text-white" />
                 </div>
                 <div>

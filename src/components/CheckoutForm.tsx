@@ -130,7 +130,7 @@ export const CheckoutForm: React.FC = () => {
           />
 
           {/* Modal Card */}
-          <div className="relative bg-[#FFF8EF] border border-[#F2C7A9] rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl z-10 my-8 overflow-hidden">
+          <div className="relative bg-[#FFF8EF] border border-[#F2C7A9] rounded-3xl max-w-2xl w-full p-5 sm:p-8 shadow-2xl z-10 my-auto max-h-[90vh] overflow-y-auto">
             {/* Header */}
             <div className="flex items-center justify-between border-b border-[#F2C7A9]/60 pb-4 mb-6">
               <div className="flex items-center gap-3">
@@ -288,7 +288,7 @@ export const CheckoutForm: React.FC = () => {
                 <label className="block text-xs font-bold text-[#512719] mb-1.5">
                   Fulfilment Type <span className="text-[#EF4329]">*</span>
                 </label>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
                   <button
                     type="button"
                     onClick={() => {
@@ -301,7 +301,7 @@ export const CheckoutForm: React.FC = () => {
                         : 'bg-white text-[#512719] border-[#F2C7A9]'
                     }`}
                   >
-                    <Truck className="w-4 h-4" />
+                    <Truck className="w-4 h-4 shrink-0" />
                     <span>Delivery (Fee on WhatsApp)</span>
                   </button>
 
@@ -317,7 +317,7 @@ export const CheckoutForm: React.FC = () => {
                         : 'bg-white text-[#512719] border-[#F2C7A9]'
                     }`}
                   >
-                    <Store className="w-4 h-4" />
+                    <Store className="w-4 h-4 shrink-0" />
                     <span>Pickup (Free)</span>
                   </button>
                 </div>
@@ -392,10 +392,10 @@ export const CheckoutForm: React.FC = () => {
               {/* Submit CTA */}
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2.5 py-4 px-6 rounded-full font-bold text-sm bg-[#EF4329] hover:bg-[#D4341C] text-white shadow-lg shadow-[#EF4329]/25 hover:shadow-xl transition-all duration-200"
+                className="w-full flex items-center justify-center gap-2.5 py-3.5 sm:py-4 px-4 sm:px-6 rounded-full font-bold text-xs sm:text-sm bg-[#EF4329] hover:bg-[#D4341C] text-white shadow-lg shadow-[#EF4329]/25 hover:shadow-xl transition-all duration-200"
               >
-                <MessageCircle className="w-5 h-5 text-white" />
-                <span>
+                <MessageCircle className="w-5 h-5 text-white shrink-0" />
+                <span className="text-center">
                   {isDelivery
                     ? `Send Order via WhatsApp (${formatCurrency(subtotal)} + Delivery)`
                     : `Send Order via WhatsApp (${formatCurrency(subtotal)})`}

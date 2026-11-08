@@ -93,13 +93,13 @@ export const ProductSection: React.FC = () => {
         </div>
 
         {/* Tasting Duo Banner / High-Conversion Bundle */}
-        <div className="mt-14 max-w-5xl mx-auto bg-gradient-to-r from-[#F5E9D9] via-[#F2C7A9]/40 to-[#F5E9D9] rounded-3xl p-6 sm:p-8 border border-[#F2C7A9] shadow-md flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-4 text-center md:text-left">
+        <div className="mt-14 max-w-5xl mx-auto bg-gradient-to-r from-[#F5E9D9] via-[#F2C7A9]/40 to-[#F5E9D9] rounded-3xl p-5 sm:p-8 border border-[#F2C7A9] shadow-md flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 text-center sm:text-left">
             <div className="w-14 h-14 rounded-2xl bg-[#EF4329] text-[#FFF8EF] flex items-center justify-center shrink-0 shadow-md shadow-[#EF4329]/20">
               <PackageCheck className="w-7 h-7" />
             </div>
             <div>
-              <div className="flex items-center gap-2 justify-center md:justify-start">
+              <div className="flex items-center gap-2 justify-center sm:justify-start">
                 <span className="text-xs font-bold uppercase tracking-wider text-[#EF4329]">
                   Can't decide? Try Both!
                 </span>
@@ -116,7 +116,7 @@ export const ProductSection: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0 w-full md:w-auto">
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 shrink-0 w-full md:w-auto">
             <div className="text-center sm:text-right">
               <span className="text-xs text-[#512719]/60 font-medium block">Bundle Price</span>
               <span className="font-heading font-black text-2xl text-[#EF4329]">

@@ -51,9 +51,9 @@ export const ContactSection: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 max-w-5xl mx-auto items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 max-w-5xl mx-auto items-start">
           {/* Contact Details Card */}
-          <div className="lg:col-span-5 bg-white border border-[#F2C7A9]/80 rounded-3xl p-8 shadow-lg shadow-[#512719]/5 space-y-6">
+          <div className="lg:col-span-5 bg-white border border-[#F2C7A9]/80 rounded-3xl p-5 sm:p-8 shadow-lg shadow-[#512719]/5 space-y-5 sm:space-y-6">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-[#EF4329]">
                 Direct Lines
@@ -71,30 +71,30 @@ export const ContactSection: React.FC = () => {
               href={BRAND_CONFIG.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-4 p-4 rounded-2xl bg-[#EBF9F1] border border-[#25D366]/30 hover:border-[#25D366] transition-all group"
+              className="flex items-center gap-3.5 sm:gap-4 p-3.5 sm:p-4 rounded-2xl bg-[#EBF9F1] border border-[#25D366]/30 hover:border-[#25D366] transition-all group"
             >
-              <div className="w-12 h-12 rounded-xl bg-[#25D366] text-white flex items-center justify-center shrink-0 shadow-md shadow-[#25D366]/20">
-                <MessageCircle className="w-6 h-6" />
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-[#25D366] text-white flex items-center justify-center shrink-0 shadow-md shadow-[#25D366]/20">
+                <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
-              <div>
-                <span className="text-xs font-bold text-[#128C7E] uppercase tracking-wider">
+              <div className="min-w-0">
+                <span className="text-xs font-bold text-[#128C7E] uppercase tracking-wider block">
                   Fastest Response
                 </span>
-                <p className="text-base font-extrabold text-[#191513]">WhatsApp Ordering</p>
+                <p className="text-base font-extrabold text-[#191513] truncate">WhatsApp Ordering</p>
                 <p className="text-xs text-[#191513]/70 font-semibold">{BRAND_CONFIG.displayPhone}</p>
               </div>
             </a>
 
             {/* Phone numbers */}
-            <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#FFF8EF] border border-[#F2C7A9]/60">
-              <div className="w-12 h-12 rounded-xl bg-[#F5E9D9] text-[#512719] flex items-center justify-center shrink-0">
+            <div className="flex items-center gap-3.5 sm:gap-4 p-3.5 sm:p-4 rounded-2xl bg-[#FFF8EF] border border-[#F2C7A9]/60">
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-[#F5E9D9] text-[#512719] flex items-center justify-center shrink-0">
                 <Phone className="w-5 h-5 text-[#EF4329]" />
               </div>
-              <div>
-                <span className="text-xs font-bold text-[#EF4329] uppercase tracking-wider">
+              <div className="min-w-0">
+                <span className="text-xs font-bold text-[#EF4329] uppercase tracking-wider block">
                   Call Line
                 </span>
-                <p className="text-sm font-bold text-[#512719]">{BRAND_CONFIG.displayPhone}</p>
+                <p className="text-sm font-bold text-[#512719] truncate">{BRAND_CONFIG.displayPhone}</p>
                 {BRAND_CONFIG.displayPhoneAlt && (
                   <p className="text-xs text-[#512719]/70 font-medium">Alt: {BRAND_CONFIG.displayPhoneAlt}</p>
                 )}
@@ -102,12 +102,12 @@ export const ContactSection: React.FC = () => {
             </div>
 
             {/* Location */}
-            <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#FFF8EF] border border-[#F2C7A9]/60">
-              <div className="w-12 h-12 rounded-xl bg-[#F5E9D9] text-[#512719] flex items-center justify-center shrink-0">
+            <div className="flex items-center gap-3.5 sm:gap-4 p-3.5 sm:p-4 rounded-2xl bg-[#FFF8EF] border border-[#F2C7A9]/60">
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-[#F5E9D9] text-[#512719] flex items-center justify-center shrink-0">
                 <MapPin className="w-5 h-5 text-[#EF4329]" />
               </div>
-              <div>
-                <span className="text-xs font-bold text-[#EF4329] uppercase tracking-wider">
+              <div className="min-w-0">
+                <span className="text-xs font-bold text-[#EF4329] uppercase tracking-wider block">
                   Operating Location
                 </span>
                 <p className="text-sm font-bold text-[#512719]">{BRAND_CONFIG.pickupLocation}</p>
@@ -117,7 +117,7 @@ export const ContactSection: React.FC = () => {
           </div>
 
           {/* Contact & Inquiries Form */}
-          <div className="lg:col-span-7 bg-white border border-[#F2C7A9]/80 rounded-3xl p-8 shadow-lg shadow-[#512719]/5">
+          <div className="lg:col-span-7 bg-white border border-[#F2C7A9]/80 rounded-3xl p-5 sm:p-8 shadow-lg shadow-[#512719]/5">
             <h3 className="font-heading font-extrabold text-2xl text-[#512719] mb-2">
               Send an Instant Inquiry
             </h3>
