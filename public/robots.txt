@@ -1,20 +1,10 @@
-# Robots.txt for Lobbo Beverages (https://lobbodrinks.com)
-# Allow legitimate web crawlers to access all public pages and assets
-
 User-agent: *
 Allow: /
 Allow: /images/
 Allow: /assets/
 Allow: /logo.svg
 Allow: /favicon.svg
-
-# Disallow private paths or transactional query parameters if any
 Disallow: /api/
 Disallow: /*?*checkout=*
-
-# Crawl-delay for polite crawling (optional)
 Crawl-delay: 1
-
-# XML Sitemap location
 Sitemap: https://lobbodrinks.com/sitemap.xml
-
