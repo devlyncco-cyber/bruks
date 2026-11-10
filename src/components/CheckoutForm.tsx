@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, MessageCircle, Truck, Store, AlertCircle, ShoppingBag, ShieldCheck, MapPin } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { useCart } from '../hooks/useCart';
@@ -6,6 +6,7 @@ import { BRAND_CONFIG } from '../data/brand';
 import { formatCurrency } from '../utils/currency';
 import { buildWhatsAppMessage, getWhatsAppOrderUrl } from '../utils/whatsapp';
 import { OrderConfirmationModal } from './OrderConfirmationModal';
+import { trackBeginCheckout, trackEvent } from '../utils/analytics';
 
 export const CheckoutForm: React.FC = () => {
   const {
@@ -30,6 +31,12 @@ export const CheckoutForm: React.FC = () => {
     orderText: string;
     whatsappUrl: string;
   } | null>(null);
+
+  useEffect(() => {
+    if (isCheckoutOpen && items.length > 0) {
+      trackBeginCheckout(items, subtotal);
+    }
+  }, [isCheckoutOpen, items, subtotal]);
 
   if (!isCheckoutOpen && !confirmationData) return null;
 
@@ -97,6 +104,15 @@ export const CheckoutForm: React.FC = () => {
 
     // Open WhatsApp in new window
     window.open(url, '_blank');
+
+    // Track lead event in Google Analytics
+    trackEvent('generate_lead', {
+      currency: 'GHS',
+      value: subtotal,
+      fulfilment_type: fulfilmentType,
+      items_count: items.length,
+      method: 'whatsapp',
+    });
 
     // Show Confirmation modal
     setConfirmationData({

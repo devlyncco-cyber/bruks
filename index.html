@@ -1,46 +1,301 @@
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en-GH" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lobbo Beverages | Home-Brewed Refreshment</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Primary SEO Metadata -->
+    <title>Lobbo Beverages | Refreshing Drinks in Ghana</title>
     <meta
       name="description"
-      content="Discover Lobbo Beverages – refreshing home-brewed Cous Cous and Bruks drinks. Explore our flavours and order conveniently through WhatsApp."
+      content="Discover Lobbo Beverages and explore our refreshing drinks. Experience quality, great taste and convenient ordering in Ghana."
     />
-    <meta name="keywords" content="Lobbo Beverages, Cous Cous, Bruks, home brewed drinks, Ghana beverages, chilled drinks Accra, refreshing beverage" />
-    <meta name="theme-color" content="#FFF8EF" />
+    <meta
+      name="keywords"
+      content="Lobbo Beverages, beverages in Ghana, drinks in Ghana, buy beverages in Ghana, refreshing drinks, quality beverages in Ghana, Cous Cous drink, Bruks beverage, drinks supplier in Ghana, beverage brand in Ghana, home brewed drinks Accra, chilled drinks Ghana, artisanal drinks"
+    />
+    <meta name="author" content="Lobbo Beverages" />
+    <meta name="publisher" content="Lobbo Beverages" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://lobbodrinks.com/" />
+
+    <!-- Geographic & Regional Targeting (Ghana) -->
+    <meta name="geo.region" content="GH-AA" />
+    <meta name="geo.placename" content="Accra" />
+    <meta name="geo.position" content="5.6037; -0.1870" />
+    <meta name="ICBM" content="5.6037, -0.1870" />
+
+    <!-- Mobile, PWA & Theme Colors -->
+    <meta name="theme-color" content="#FFF8EF" />
+    <meta name="color-scheme" content="light" />
+    <meta name="application-name" content="Lobbo Beverages" />
+    <meta name="apple-mobile-web-app-title" content="Lobbo Beverages" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/logo.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Open Graph / Facebook / WhatsApp Social Card -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Lobbo Beverages | Home-Brewed Refreshment" />
+    <meta property="og:site_name" content="Lobbo Beverages" />
+    <meta property="og:locale" content="en_GH" />
+    <meta property="og:title" content="Lobbo Beverages | Refreshing Drinks in Ghana" />
     <meta
       property="og:description"
-      content="Discover Lobbo Beverages – refreshing home-brewed Cous Cous and Bruks drinks. Explore our flavours and order conveniently through WhatsApp."
+      content="Discover Lobbo Beverages and explore our refreshing drinks. Experience quality, great taste and convenient ordering in Ghana."
     />
-    <meta property="og:image" content="/images/lobbo-cous-cous.jpg" />
+    <meta property="og:url" content="https://lobbodrinks.com/" />
+    <meta property="og:image" content="https://lobbodrinks.com/og-image.jpg" />
+    <meta property="og:image:secure_url" content="https://lobbodrinks.com/og-image.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Lobbo Beverages - Home-brewed refreshing drinks in Ghana" />
 
-    <!-- Twitter -->
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Lobbo Beverages | Home-Brewed Refreshment" />
+    <meta name="twitter:site" content="@lobbodrinks" />
+    <meta name="twitter:title" content="Lobbo Beverages | Refreshing Drinks in Ghana" />
     <meta
       name="twitter:description"
-      content="Discover Lobbo Beverages – refreshing home-brewed Cous Cous and Bruks drinks. Explore our flavours and order conveniently through WhatsApp."
+      content="Discover Lobbo Beverages and explore our refreshing drinks. Experience quality, great taste and convenient ordering in Ghana."
     />
-    <meta name="twitter:image" content="/images/lobbo-cous-cous.jpg" />
+    <meta name="twitter:image" content="https://lobbodrinks.com/og-image.jpg" />
+    <meta name="twitter:image:alt" content="Lobbo Beverages - Home-brewed Cous Cous and Bruks drinks" />
 
-    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <!-- Performance Preconnects and Critical Asset Preloads -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+    <link rel="preload" as="image" href="/images/lobbo-cous-cous.jpg" fetchpriority="high" />
+
+    <!-- Structured Data (JSON-LD Schema Markup) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://lobbodrinks.com/#organization",
+          "name": "Lobbo Beverages",
+          "url": "https://lobbodrinks.com",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://lobbodrinks.com/logo.svg",
+            "caption": "Lobbo Beverages Logo"
+          },
+          "description": "Authentic home-brewed beverages crafted for refreshing moments in Ghana. Home of signature Lobbo Cous Cous and Lobbo Bruks.",
+          "telephone": "+233243191039",
+          "email": "contact@lobbodrinks.com",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Accra",
+            "addressRegion": "Greater Accra",
+            "addressCountry": "GH"
+          },
+          "sameAs": [
+            "https://wa.me/233243191039"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://lobbodrinks.com/#website",
+          "url": "https://lobbodrinks.com",
+          "name": "Lobbo Beverages",
+          "description": "Refreshing home-brewed drinks in Ghana. Order Lobbo Cous Cous and Lobbo Bruks chilled via WhatsApp.",
+          "publisher": {
+            "@id": "https://lobbodrinks.com/#organization"
+          },
+          "inLanguage": "en-GH"
+        },
+        {
+          "@type": "FoodEstablishment",
+          "@id": "https://lobbodrinks.com/#localbusiness",
+          "name": "Lobbo Beverages",
+          "image": "https://lobbodrinks.com/images/lobbo-cous-cous.jpg",
+          "url": "https://lobbodrinks.com",
+          "telephone": "+233243191039",
+          "priceRange": "GH₵ 20.00 - GH₵ 420.00",
+          "currenciesAccepted": "GHS",
+          "paymentAccepted": "Cash on Delivery, Mobile Money, Bank Transfer",
+          "servesCuisine": "Home-Brewed Beverages",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Accra / Koforidua",
+            "addressRegion": "Greater Accra",
+            "addressCountry": "GH"
+          },
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+              "opens": "08:00",
+              "closes": "18:00"
+            }
+          ]
+        },
+        {
+          "@type": "Product",
+          "@id": "https://lobbodrinks.com/#product-cous-cous",
+          "name": "Lobbo Cous Cous (350ml)",
+          "image": "https://lobbodrinks.com/images/lobbo-cous-cous.jpg",
+          "description": "Enjoy the distinctive taste of Lobbo Cous Cous, a signature home-brewed beverage prepared for a smooth and refreshing experience in Ghana. Best served chilled with a white cap seal.",
+          "sku": "LOBBO-COUSCOUS-350",
+          "brand": {
+            "@id": "https://lobbodrinks.com/#organization"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://lobbodrinks.com/#products",
+            "priceCurrency": "GHS",
+            "price": "20.00",
+            "priceValidUntil": "2027-12-31",
+            "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/NewCondition",
+            "seller": {
+              "@id": "https://lobbodrinks.com/#organization"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "@id": "https://lobbodrinks.com/#product-bruks",
+          "name": "Lobbo Bruks (350ml)",
+          "image": "https://lobbodrinks.com/images/lobbo-bruks.jpg",
+          "description": "Experience Lobbo Bruks, a rich and distinctive home-brewed beverage with a unique textured character in Ghana. Best served chilled with a black cap seal.",
+          "sku": "LOBBO-BRUKS-350",
+          "brand": {
+            "@id": "https://lobbodrinks.com/#organization"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://lobbodrinks.com/#products",
+            "priceCurrency": "GHS",
+            "price": "20.00",
+            "priceValidUntil": "2027-12-31",
+            "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/NewCondition",
+            "seller": {
+              "@id": "https://lobbodrinks.com/#organization"
+            }
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://lobbodrinks.com/#faq-schema",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What beverages does Lobbo Beverages produce in Ghana?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Lobbo Beverages crafts two signature home-brewed beverages: Lobbo Cous Cous (a smooth, creamy off-white drink with a white cap seal) and Lobbo Bruks (a rich, artisanal beverage with a distinctive textured spiced character and black cap seal). Both drinks are packaged in 350ml bottles and crafted for refreshing moments."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How much do Lobbo Cous Cous and Lobbo Bruks cost?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Both signature drinks are priced at GH₵ 20.00 for a single 350ml retail bottle. We also provide cost-saving crate bundles: a 6-Bottle Pack for GH₵ 110.00, a Full 12-Bottle Crate for GH₵ 215.00, and a 24-Bottle Event Crate for GH₵ 420.00."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I place an order for delivery or pickup?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Ordering is fast and convenient: choose your retail bottles or crates directly on our website, click 'Proceed to WhatsApp Checkout', and provide your name, phone number, and location. Your order details are automatically transferred to our WhatsApp ordering desk (+233 24 319 1039) where our team confirms your order."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How is the delivery fee calculated in Ghana?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "To provide the fairest delivery rates, you state your delivery location (e.g. East Legon, Spintex, Tema, Kumasi) and our team calculates the exact delivery bill on WhatsApp according to your distance. Free pickup is also available in Accra / Koforidua."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I order Lobbo drinks in bulk for weddings, corporate meetings, and events?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes! We specialize in event catering and bulk crate supply for weddings, family gatherings, office refreshments, and local retailers with 12-bottle and 24-bottle crates packed ice-cold."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the recommended storage and serving temperature?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Lobbo beverages are home-brewed without unnecessary artificial additives and must be strictly kept chilled below 5°C. For the best flavour, store them in your refrigerator or icebox and serve ice-cold."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://lobbodrinks.com/#breadcrumbs",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://lobbodrinks.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Our Products",
+              "item": "https://lobbodrinks.com/#products"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Bulk & Retail Crates",
+              "item": "https://lobbodrinks.com/#bulk"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Frequently Asked Questions",
+              "item": "https://lobbodrinks.com/#faq"
+            },
+            {
+              "@type": "ListItem",
+              "position": 5,
+              "name": "Contact & WhatsApp Orders",
+              "item": "https://lobbodrinks.com/#contact"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
   </head>
   <body class="bg-[#FFF8EF] text-[#512719] font-sans antialiased selection:bg-[#EF4329]/20 selection:text-[#EF4329]">
+    <!-- Fallback Content for Crawlers & Non-JS Clients -->
+    <noscript>
+      <div style="padding: 2rem; background: #FFF8EF; color: #512719; font-family: sans-serif; text-align: center;">
+        <h1 style="font-size: 2rem; color: #EF4329;">Lobbo Beverages – Refreshing Drinks in Ghana</h1>
+        <p>Home-Brewed Excellence. Serve Chilled.</p>
+        <p>Producers of handcrafted Lobbo Cous Cous (350ml - White Cap) and Lobbo Bruks (350ml - Black Cap).</p>
+        <p>Single bottle price: GH₵ 20.00. 6-Pack: GH₵ 110.00. 12-Bottle Crate: GH₵ 215.00. 24-Bottle Event Crate: GH₵ 420.00.</p>
+        <p>Pickup locations in Accra and Koforidua. Doorstep delivery available across Ghana.</p>
+        <p>Order directly on WhatsApp: <a href="https://wa.me/233243191039" style="color: #EF4329; font-weight: bold;">+233 24 319 1039</a></p>
+      </div>
+    </noscript>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-

@@ -3,17 +3,20 @@ import { X, Snowflake, Sparkles, ShoppingBag, Zap, Minus, Plus, Check, Tag, Laye
 import { useCart } from '../hooks/useCart';
 import { formatCurrency } from '../utils/currency';
 import { PackagingOption } from '../types';
+import { trackAddToCart } from '../utils/analytics';
 
 export const ProductQuickViewModal: React.FC = () => {
   const { quickViewProduct, closeQuickView, addToCart, openCheckout } = useCart();
   const [selectedOption, setSelectedOption] = useState<PackagingOption | null>(null);
   const [quantity, setQuantity] = useState(1);
+  const [quantityInput, setQuantityInput] = useState('1');
   const [added, setAdded] = useState(false);
 
   useEffect(() => {
     if (quickViewProduct) {
       setSelectedOption(quickViewProduct.packagingOptions[0]);
       setQuantity(1);
+      setQuantityInput('1');
     }
   }, [quickViewProduct]);
 
@@ -22,8 +25,46 @@ export const ProductQuickViewModal: React.FC = () => {
   const product = quickViewProduct;
   const perBottlePrice = selectedOption.price / selectedOption.bottlesCount;
 
+  const handleDecrease = () => {
+    if (quantity > 1) {
+      const next = quantity - 1;
+      setQuantity(next);
+      setQuantityInput(String(next));
+    }
+  };
+
+  const handleIncrease = () => {
+    const next = quantity + 1;
+    setQuantity(next);
+    setQuantityInput(String(next));
+  };
+
+  const handleQuantityInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value.replace(/\D/g, '');
+    setQuantityInput(val);
+    if (val !== '') {
+      const parsed = parseInt(val, 10);
+      if (parsed > 0) {
+        setQuantity(Math.min(999, parsed));
+      }
+    }
+  };
+
+  const handleQuantityInputBlur = () => {
+    if (!quantityInput || parseInt(quantityInput, 10) < 1) {
+      setQuantity(1);
+      setQuantityInput('1');
+    } else {
+      const parsed = Math.min(999, parseInt(quantityInput, 10));
+      setQuantity(parsed);
+      setQuantityInput(String(parsed));
+    }
+  };
+
   const handleAddToCart = () => {
-    addToCart(product, quantity, selectedOption);
+    const finalQty = Math.max(1, quantity || 1);
+    addToCart(product, finalQty, selectedOption);
+    trackAddToCart(product, finalQty, selectedOption);
     setAdded(true);
     setTimeout(() => {
       setAdded(false);
@@ -31,7 +72,9 @@ export const ProductQuickViewModal: React.FC = () => {
   };
 
   const handleBuyNow = () => {
-    addToCart(product, quantity, selectedOption);
+    const finalQty = Math.max(1, quantity || 1);
+    addToCart(product, finalQty, selectedOption);
+    trackAddToCart(product, finalQty, selectedOption);
     closeQuickView();
     openCheckout();
   };
@@ -69,8 +112,11 @@ export const ProductQuickViewModal: React.FC = () => {
             />
             <img
               src={product.image}
-              alt={product.name}
+              alt={`Lobbo ${product.name} (${product.size}) - ${product.bottleAppearance} in Ghana`}
               className="relative z-10 max-h-72 w-auto object-contain drop-shadow-[0_15px_20px_rgba(0,0,0,0.6)]"
+              loading="lazy"
+              width={300}
+              height={380}
             />
           </div>
 
@@ -186,24 +232,41 @@ export const ProductQuickViewModal: React.FC = () => {
 
             {/* Controls */}
             <div className="pt-4 border-t border-[#F2C7A9]/60 space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-bold text-[#512719]">
-                  Quantity ({selectedOption.shortName}):
-                </span>
-                <div className="flex items-center bg-white border border-[#F2C7A9] rounded-full p-1 shadow-sm">
+              <div className="flex items-center justify-between flex-wrap gap-2">
+                <div>
+                  <span className="text-sm font-bold text-[#512719] block">
+                    Quantity ({selectedOption.shortName}):
+                  </span>
+                  <span className="text-[10px] text-[#512719]/60 block">
+                    Type quantity or use +/-
+                  </span>
+                </div>
+                <div className="flex items-center bg-white border border-[#F2C7A9] rounded-full p-1 shadow-sm focus-within:ring-2 focus-within:ring-[#EF4329]/40 focus-within:border-[#EF4329] transition-all">
                   <button
                     type="button"
-                    onClick={() => quantity > 1 && setQuantity(quantity - 1)}
-                    className="w-8 h-8 rounded-full flex items-center justify-center text-[#512719] hover:bg-[#F5E9D9] disabled:opacity-40"
+                    onClick={handleDecrease}
+                    className="w-8 h-8 rounded-full flex items-center justify-center text-[#512719] hover:bg-[#F5E9D9] disabled:opacity-40 transition-colors"
                     disabled={quantity <= 1}
+                    aria-label="Decrease quantity"
                   >
                     <Minus className="w-3.5 h-3.5" />
                   </button>
-                  <span className="w-10 text-center font-bold text-sm text-[#512719]">{quantity}</span>
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    value={quantityInput}
+                    onChange={handleQuantityInputChange}
+                    onBlur={handleQuantityInputBlur}
+                    className="w-12 text-center font-bold text-sm text-[#512719] bg-transparent focus:outline-none focus:bg-[#FFF8EF] rounded py-0.5 transition-colors"
+                    aria-label={`Enter quantity of ${selectedOption.shortName}`}
+                    title="Type quantity"
+                  />
                   <button
                     type="button"
-                    onClick={() => setQuantity(quantity + 1)}
-                    className="w-8 h-8 rounded-full flex items-center justify-center text-[#512719] hover:bg-[#F5E9D9]"
+                    onClick={handleIncrease}
+                    className="w-8 h-8 rounded-full flex items-center justify-center text-[#512719] hover:bg-[#F5E9D9] transition-colors"
+                    aria-label="Increase quantity"
                   >
                     <Plus className="w-3.5 h-3.5" />
                   </button>

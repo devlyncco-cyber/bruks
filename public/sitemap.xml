@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- Homepage -->
+  <url>
+    <loc>https://lobbodrinks.com/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://lobbodrinks.com/images/lobbo-cous-cous.jpg</image:loc>
+      <image:title>Lobbo Cous Cous - Home-Brewed Beverage</image:title>
+      <image:caption>Signature smooth and creamy home-brewed Lobbo Cous Cous drink in Ghana</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://lobbodrinks.com/images/lobbo-bruks.jpg</image:loc>
+      <image:title>Lobbo Bruks - Textured Home-Brewed Beverage</image:title>
+      <image:caption>Rich textured artisanal home-brewed Lobbo Bruks drink in Ghana</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Products Section -->
+  <url>
+    <loc>https://lobbodrinks.com/#products</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Bulk & Wholesale Crates -->
+  <url>
+    <loc>https://lobbodrinks.com/#bulk</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- About Lobbo Beverages -->
+  <url>
+    <loc>https://lobbodrinks.com/#about</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Why Choose Lobbo -->
+  <url>
+    <loc>https://lobbodrinks.com/#why-lobbo</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Frequently Asked Questions -->
+  <url>
+    <loc>https://lobbodrinks.com/#faq</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Contact & WhatsApp Ordering -->
+  <url>
+    <loc>https://lobbodrinks.com/#contact</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>
+

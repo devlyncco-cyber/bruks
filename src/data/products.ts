@@ -3,9 +3,9 @@ import { Product } from '../types';
 export const PRODUCTS: Product[] = [
   {
     id: 'lobbo-cous-cous',
-    name: 'Lobbo Cous Cous',
+    name: 'Cous Cous',
     subtitle: 'Signature Smooth & Creamy Refreshment',
-    size: '250ml',
+    size: '350ml',
     price: 20.0,
     packagingOptions: [
       {
@@ -57,7 +57,7 @@ export const PRODUCTS: Product[] = [
       'Enjoy the distinctive taste of Lobbo Cous Cous, a signature home-brewed beverage prepared for a smooth and refreshing experience. Best served chilled.',
     longDescription:
       'Crafted with artisanal dedication, Lobbo Cous Cous delivers a velvety, satisfying mouthfeel that revives and quenches. Every single bottle is small-batch brewed, bottled fresh with a white cap seal, and strictly enjoyed ice-cold. Available in individual retail bottles or money-saving crates for parties and gatherings.',
-    labels: ['Home-Brewed', 'Serve Chilled', '250ml'],
+    labels: ['Home-Brewed', 'Serve Chilled', '350ml'],
     image: '/images/lobbo-cous-cous.jpg',
     featured: true,
     tasteNotes: ['Silky Smooth', 'Creamy Vanilla Accent', 'Natural Sweetness', 'Clean Finish'],
@@ -66,9 +66,9 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'lobbo-bruks',
-    name: 'Lobbo Bruks',
+    name: 'Bruks',
     subtitle: 'Rich Textured Artisanal Brew',
-    size: '300ml',
+    size: '350ml',
     price: 20.0,
     packagingOptions: [
       {
@@ -120,7 +120,7 @@ export const PRODUCTS: Product[] = [
       'Experience Lobbo Bruks, a rich and distinctive home-brewed beverage with a unique textured character. Perfect for those who appreciate something different. Best served chilled.',
     longDescription:
       'A true standout creation, Lobbo Bruks is formulated for the adventurous palate. Featuring visible textured artisanal flakes folded into an indulgent creamy base and topped with a sleek black cap, Bruks brings an authentic homemade richness you will not find anywhere else. Choose retail bottles or event crates for gatherings.',
-    labels: ['Home-Brewed', 'Serve Chilled', '300ml'],
+    labels: ['Home-Brewed', 'Serve Chilled', '350ml'],
     image: '/images/lobbo-bruks.jpg',
     featured: true,
     tasteNotes: ['Textured Spiced Flakes', 'Full Bodied Creaminess', 'Subtle Earthy Spices', 'Satisfying Crunch Notes'],

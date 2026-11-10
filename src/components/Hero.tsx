@@ -71,7 +71,7 @@ export const Hero: React.FC = () => {
 
             {/* Supporting Text */}
             <p className="text-base sm:text-xl text-[#512719]/85 font-normal max-w-xl leading-relaxed mb-7 sm:mb-8">
-              Discover the goodness of home-brewed beverages, crafted for refreshing moments and best enjoyed chilled.
+              Discover the goodness of home-brewed beverages in Ghana, crafted for refreshing moments and best enjoyed chilled.
             </p>
 
             {/* CTAs */}
@@ -151,18 +151,21 @@ export const Hero: React.FC = () => {
                 <div className="relative z-10 w-full h-72 sm:h-96 flex items-center justify-center py-2 mt-4 sm:mt-2">
                   <img
                     src={activeProduct.image}
-                    alt={`${activeProduct.name} - ${activeProduct.bottleAppearance}`}
+                    alt={`Lobbo ${activeProduct.name} (${activeProduct.size}) - Home-brewed refreshing drink in Ghana`}
                     className="max-h-full w-auto object-contain drop-shadow-[0_20px_25px_rgba(0,0,0,0.6)] transition-transform duration-500 group-hover:scale-105"
                     loading="eager"
+                    fetchPriority="high"
+                    width={350}
+                    height={450}
                   />
                 </div>
 
                 {/* Card Bottom Meta & Quick Add */}
                 <div className="relative z-10 mt-2 pt-3 sm:pt-4 border-t border-white/10 flex items-center justify-between text-[#FFF8EF] gap-2">
                   <div className="min-w-0">
-                    <h2 className="text-lg sm:text-xl font-extrabold tracking-tight font-heading truncate">
+                    <h3 className="text-lg sm:text-xl font-extrabold tracking-tight font-heading truncate">
                       {activeProduct.name}
-                    </h2>
+                    </h3>
                     <p className="text-[11px] sm:text-xs text-[#FFF8EF]/75 font-medium truncate">
                       {activeProduct.bottleAppearance}
                     </p>

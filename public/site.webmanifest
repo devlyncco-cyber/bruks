@@ -1,0 +1,22 @@
+{
+  "name": "Lobbo Beverages",
+  "short_name": "Lobbo",
+  "description": "Home-Brewed Excellence. Serve Chilled. Signature Cous Cous and Bruks beverages in Ghana.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFF8EF",
+  "theme_color": "#EF4329",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
+

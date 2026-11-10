@@ -75,8 +75,11 @@ export const PromoBanner: React.FC = () => {
                     <div className="w-20 h-28 sm:w-24 sm:h-36 flex items-center justify-center">
                       <img
                         src={prod.image}
-                        alt={prod.name}
+                        alt={`Lobbo ${prod.name} (${prod.size}) - Home-brewed drink bottle in Ghana`}
                         className="max-h-full w-auto object-contain drop-shadow-md hover:scale-110 transition-transform"
+                        loading="lazy"
+                        width={120}
+                        height={180}
                       />
                     </div>
                     <span className="block text-[11px] font-bold text-[#FFF8EF] mt-1">

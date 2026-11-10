@@ -24,18 +24,18 @@ The entire visual identity is directly inspired by the authentic photographs and
 All product specifications and prices are managed centrally in `src/data/products.ts`:
 
 1. **Lobbo Cous Cous**
-   - **Size**: 250ml
+   - **Size**: 350ml
    - **Price**: GH₵ 20.00
    - **Bottle**: White cap seal, smooth creamy off-white beverage
    - **Accent**: Lobbo Orange-Red
-   - **Labels**: Home-Brewed, Serve Chilled, 250ml
+   - **Labels**: Home-Brewed, Serve Chilled, 350ml
 
 2. **Lobbo Bruks**
-   - **Size**: 300ml
+   - **Size**: 350ml
    - **Price**: GH₵ 20.00
    - **Bottle**: Black cap seal, creamy beverage with distinctive spiced/textured flakes
    - **Accent**: Deep Chocolate Brown
-   - **Labels**: Home-Brewed, Serve Chilled, 300ml
+   - **Labels**: Home-Brewed, Serve Chilled, 350ml
 
 ---
 

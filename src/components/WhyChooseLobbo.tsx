@@ -22,7 +22,7 @@ export const WhyChooseLobbo: React.FC = () => {
       icon: <Package className="w-6 h-6 text-[#EF4329]" />,
       title: 'Convenient Bottle Packaging',
       description:
-        'Sealed in ergonomic 250ml and 300ml bottles designed for quick chilling, easy portability, and spill-free enjoyment on the move.',
+        'Sealed in ergonomic 350ml and 350ml bottles designed for quick chilling, easy portability, and spill-free enjoyment on the move.',
     },
     {
       step: '04',
@@ -68,9 +68,8 @@ export const WhyChooseLobbo: React.FC = () => {
             return (
               <div
                 key={point.title}
-                className={`bg-[#FFFFFF] border border-[#F2C7A9]/70 rounded-3xl p-7 shadow-md shadow-[#512719]/5 card-hover-lift flex flex-col justify-between relative overflow-hidden group ${
-                  isLast ? 'md:col-span-2 lg:col-span-1 bg-gradient-to-br from-white via-white to-[#F5E9D9]/40' : ''
-                }`}
+                className={`bg-[#FFFFFF] border border-[#F2C7A9]/70 rounded-3xl p-7 shadow-md shadow-[#512719]/5 card-hover-lift flex flex-col justify-between relative overflow-hidden group ${isLast ? 'md:col-span-2 lg:col-span-1 bg-gradient-to-br from-white via-white to-[#F5E9D9]/40' : ''
+                  }`}
               >
                 {/* Step Watermark */}
                 <span className="absolute top-4 right-5 text-4xl font-black font-heading text-[#F2C7A9]/40 select-none group-hover:text-[#EF4329]/20 transition-colors">

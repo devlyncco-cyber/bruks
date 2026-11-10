@@ -61,13 +61,15 @@ export const AboutSection: React.FC = () => {
                     <div className="h-56 sm:h-72 flex items-center justify-center">
                       <img
                         src={PRODUCTS[0].image}
-                        alt="Lobbo Cous Cous"
+                        alt="Lobbo Cous Cous (350ml) - Creamy Artisanal Home Brew in Ghana"
                         className="max-h-full w-auto object-contain drop-shadow-[0_15px_15px_rgba(0,0,0,0.8)] hover:scale-105 transition-transform duration-300"
                         loading="lazy"
+                        width={220}
+                        height={320}
                       />
                     </div>
                     <span className="mt-2.5 sm:mt-3 text-[11px] sm:text-xs font-black uppercase text-[#EF4329] tracking-wider text-center">
-                      Cous Cous (250ml)
+                      Cous Cous (350ml)
                     </span>
                   </div>
 
@@ -76,13 +78,15 @@ export const AboutSection: React.FC = () => {
                     <div className="h-56 sm:h-72 flex items-center justify-center">
                       <img
                         src={PRODUCTS[1].image}
-                        alt="Lobbo Bruks"
+                        alt="Lobbo Bruks (350ml) - Textured Artisanal Home Brew in Ghana"
                         className="max-h-full w-auto object-contain drop-shadow-[0_15px_15px_rgba(0,0,0,0.8)] hover:scale-105 transition-transform duration-300"
                         loading="lazy"
+                        width={220}
+                        height={320}
                       />
                     </div>
                     <span className="mt-2.5 sm:mt-3 text-[11px] sm:text-xs font-black uppercase text-[#F2C7A9] tracking-wider text-center">
-                      Bruks (300ml)
+                      Bruks (350ml)
                     </span>
                   </div>
                 </div>

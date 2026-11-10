@@ -6,6 +6,7 @@ import { BulkSection } from '../components/BulkSection';
 import { AboutSection } from '../components/AboutSection';
 import { WhyChooseLobbo } from '../components/WhyChooseLobbo';
 import { PromoBanner } from '../components/PromoBanner';
+import { FaqSection } from '../components/FaqSection';
 import { ContactSection } from '../components/ContactSection';
 import { Footer } from '../components/Footer';
 import { CartDrawer } from '../components/CartDrawer';
@@ -39,6 +40,9 @@ export const Home: React.FC = () => {
 
         {/* Promotional / Call-to-Action Banner */}
         <PromoBanner />
+
+        {/* Frequently Asked Questions */}
+        <FaqSection />
 
         {/* Contact & Orders Section */}
         <ContactSection />

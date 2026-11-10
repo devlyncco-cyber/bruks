@@ -143,7 +143,7 @@ export const CartDrawer: React.FC = () => {
 
                       <div className="mt-2.5 flex items-center justify-between flex-wrap gap-2">
                         {/* Quantity selector */}
-                        <div className="flex items-center bg-[#FFF8EF] border border-[#F2C7A9] rounded-full p-0.5">
+                        <div className="flex items-center bg-[#FFF8EF] border border-[#F2C7A9] rounded-full p-0.5 focus-within:ring-1 focus-within:ring-[#EF4329]">
                           <button
                             type="button"
                             onClick={() => updateQuantity(item.id, item.quantity - 1)}
@@ -152,16 +152,28 @@ export const CartDrawer: React.FC = () => {
                           >
                             <Minus className="w-3 h-3" />
                           </button>
-                          <span className="w-6 text-center font-bold text-xs text-[#512719]">
-                            {item.quantity}
-                          </span>
+                          <input
+                            type="text"
+                            inputMode="numeric"
+                            pattern="[0-9]*"
+                            value={item.quantity}
+                            onChange={(e) => {
+                              const val = e.target.value.replace(/\D/g, '');
+                              if (val) {
+                                const parsed = Math.min(999, Math.max(1, parseInt(val, 10)));
+                                updateQuantity(item.id, parsed);
+                              }
+                            }}
+                            className="w-7 text-center font-bold text-xs text-[#512719] bg-transparent focus:outline-none focus:bg-white rounded py-0.5"
+                            aria-label={`Quantity of ${item.product.name}`}
+                          />
                           <button
                             type="button"
                             onClick={() => updateQuantity(item.id, item.quantity + 1)}
                             className="w-6 h-6 rounded-full flex items-center justify-center text-[#512719] hover:bg-[#F5E9D9]"
                             aria-label="Increase quantity"
                           >
-                            <Plus className="w-3 h-3" />
+                            <Plus className="w-3.5 h-3.5" />
                           </button>
                         </div>
 

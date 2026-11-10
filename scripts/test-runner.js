@@ -10,7 +10,7 @@ const PRODUCTS = [
   {
     id: 'lobbo-cous-cous',
     name: 'Lobbo Cous Cous',
-    size: '250ml',
+    size: '350ml',
     price: 20.0,
     packagingOptions: [
       { id: 'single', name: 'Single Bottle (Retail)', shortName: '1 Bottle', bottlesCount: 1, type: 'retail', price: 20.0 },
@@ -22,7 +22,7 @@ const PRODUCTS = [
   {
     id: 'lobbo-bruks',
     name: 'Lobbo Bruks',
-    size: '300ml',
+    size: '350ml',
     price: 20.0,
     packagingOptions: [
       { id: 'single', name: 'Single Bottle (Retail)', shortName: '1 Bottle', bottlesCount: 1, type: 'retail', price: 20.0 },

@@ -18,6 +18,7 @@ export const Footer: React.FC = () => {
     { label: 'Bulk & Retail', href: '#bulk' },
     { label: 'About Us', href: '#about' },
     { label: 'Why Lobbo', href: '#why-lobbo' },
+    { label: 'FAQs', href: '#faq' },
     { label: 'Contact & Orders', href: '#contact' },
   ];
 

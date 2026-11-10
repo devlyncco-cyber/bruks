@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { MessageCircle, Phone, MapPin, Send, CheckCircle2 } from 'lucide-react';
 import { BRAND_CONFIG } from '../data/brand';
+import { trackEvent } from '../utils/analytics';
 
 export const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -27,6 +28,10 @@ export const ContactSection: React.FC = () => {
 
     const url = `https://wa.me/${BRAND_CONFIG.whatsappNumber}?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank');
+    trackEvent('contact_inquiry', {
+      subject: formData.subject,
+      method: 'whatsapp',
+    });
     setSubmitted(true);
   };
 

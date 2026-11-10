@@ -13,6 +13,12 @@ export const BRAND_CONFIG: BrandConfig = {
   displayPhoneAlt: '+233 26 110 2751',
   deliveryNote: 'How much is the delivery to my place please?',
   pickupLocation: 'Accra / Koforidua',
+  websiteUrl: 'https://lobbodrinks.com',
+  domain: 'lobbodrinks.com',
+  seoTitle: 'Lobbo Beverages | Refreshing Drinks in Ghana',
+  seoDescription:
+    'Discover Lobbo Beverages and explore our refreshing drinks. Experience quality, great taste and convenient ordering in Ghana.',
+  ogImage: 'https://lobbodrinks.com/og-image.jpg',
 };
 
 export interface SocialLink {

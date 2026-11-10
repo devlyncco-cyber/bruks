@@ -3,6 +3,7 @@ import { Minus, Plus, ShoppingBag, Zap, Eye, Snowflake, Sparkles, Tag, Layers, P
 import { Product, PackagingOption } from '../types';
 import { useCart } from '../hooks/useCart';
 import { formatCurrency } from '../utils/currency';
+import { trackAddToCart, trackViewItem } from '../utils/analytics';
 
 interface ProductCardProps {
   product: Product;
@@ -18,29 +19,65 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, initialType }
 
   const [selectedOption, setSelectedOption] = useState<PackagingOption>(defaultOption);
   const [quantity, setQuantity] = useState(1);
+  const [quantityInput, setQuantityInput] = useState('1');
   const [isAdding, setIsAdding] = useState(false);
 
   const handleDecrease = () => {
     if (quantity > 1) {
-      setQuantity(quantity - 1);
+      const next = quantity - 1;
+      setQuantity(next);
+      setQuantityInput(String(next));
     }
   };
 
   const handleIncrease = () => {
-    setQuantity(quantity + 1);
+    const next = quantity + 1;
+    setQuantity(next);
+    setQuantityInput(String(next));
+  };
+
+  const handleQuantityInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value.replace(/\D/g, ''); // digits only
+    setQuantityInput(val);
+    if (val !== '') {
+      const parsed = parseInt(val, 10);
+      if (parsed > 0) {
+        setQuantity(Math.min(999, parsed));
+      }
+    }
+  };
+
+  const handleQuantityInputBlur = () => {
+    if (!quantityInput || parseInt(quantityInput, 10) < 1) {
+      setQuantity(1);
+      setQuantityInput('1');
+    } else {
+      const parsed = Math.min(999, parseInt(quantityInput, 10));
+      setQuantity(parsed);
+      setQuantityInput(String(parsed));
+    }
   };
 
   const handleAddToCart = () => {
+    const finalQty = Math.max(1, quantity || 1);
     setIsAdding(true);
-    addToCart(product, quantity, selectedOption);
+    addToCart(product, finalQty, selectedOption);
+    trackAddToCart(product, finalQty, selectedOption);
     setTimeout(() => {
       setIsAdding(false);
     }, 600);
   };
 
   const handleBuyNow = () => {
-    addToCart(product, quantity, selectedOption);
+    const finalQty = Math.max(1, quantity || 1);
+    addToCart(product, finalQty, selectedOption);
+    trackAddToCart(product, finalQty, selectedOption);
     openCheckout();
+  };
+
+  const handleOpenQuickView = () => {
+    trackViewItem(product, selectedOption);
+    openQuickView(product);
   };
 
   const isCousCous = product.id === 'lobbo-cous-cous';
@@ -91,16 +128,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, initialType }
         <div className="relative z-10 w-full h-64 sm:h-72 flex items-center justify-center mt-3 sm:mt-1">
           <img
             src={product.image}
-            alt={`${product.name} - ${product.bottleAppearance}`}
+            alt={`Lobbo ${product.name} (${product.size}) - ${product.bottleAppearance} home-brewed in Ghana`}
             className="h-full w-auto object-contain drop-shadow-[0_15px_20px_rgba(0,0,0,0.5)] group-hover:scale-105 transition-transform duration-500"
             loading="lazy"
+            width={300}
+            height={380}
           />
         </div>
 
         {/* Quick View Button */}
         <button
           type="button"
-          onClick={() => openQuickView(product)}
+          onClick={handleOpenQuickView}
           className="absolute bottom-3.5 right-3.5 sm:bottom-4 sm:right-4 z-20 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#FFF8EF]/90 hover:bg-[#FFF8EF] text-[#512719] text-xs font-bold shadow-md opacity-90 hover:opacity-100 transition-all backdrop-blur-sm"
           aria-label={`Quick view ${product.name}`}
         >
@@ -230,11 +269,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, initialType }
         <div className="space-y-4 pt-2 border-t border-[#F2C7A9]/40">
           {/* Quantity Selector & Item Subtotal */}
           <div className="flex items-center justify-between flex-wrap gap-2">
-            <span className="text-xs font-bold text-[#512719]">
-              Quantity ({selectedOption.shortName}):
-            </span>
+            <div>
+              <span className="text-xs font-bold text-[#512719] block">
+                Quantity ({selectedOption.shortName}):
+              </span>
+              <span className="text-[10px] text-[#512719]/60 block">
+                Type quantity or use +/-
+              </span>
+            </div>
             <div className="flex items-center gap-2.5">
-              <div className="flex items-center bg-[#FFF8EF] border border-[#F2C7A9] rounded-full p-1 shadow-sm">
+              <div className="flex items-center bg-[#FFF8EF] border border-[#F2C7A9] rounded-full p-1 shadow-sm focus-within:ring-2 focus-within:ring-[#EF4329]/40 focus-within:border-[#EF4329] transition-all">
                 <button
                   type="button"
                   onClick={handleDecrease}
@@ -244,9 +288,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, initialType }
                 >
                   <Minus className="w-3.5 h-3.5" />
                 </button>
-                <span className="w-8 text-center font-bold text-xs sm:text-sm text-[#512719]">
-                  {quantity}
-                </span>
+                <input
+                  type="text"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
+                  value={quantityInput}
+                  onChange={handleQuantityInputChange}
+                  onBlur={handleQuantityInputBlur}
+                  className="w-10 sm:w-12 text-center font-bold text-xs sm:text-sm text-[#512719] bg-transparent focus:outline-none focus:bg-white rounded py-0.5 transition-colors"
+                  aria-label={`Enter quantity of ${selectedOption.shortName}`}
+                  title="Type quantity"
+                />
                 <button
                   type="button"
                   onClick={handleIncrease}
@@ -258,7 +310,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, initialType }
               </div>
 
               <span className="text-xs font-bold text-[#512719]/80 whitespace-nowrap">
-                = {formatCurrency(selectedOption.price * quantity)}
+                = {formatCurrency(selectedOption.price * (quantity || 1))}
               </span>
             </div>
           </div>

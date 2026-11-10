@@ -16,7 +16,7 @@ export interface Product {
   id: string;
   name: string;
   subtitle?: string;
-  size: string; // e.g., '250ml', '300ml'
+  size: string; // e.g., '350ml', '350ml'
   price: number; // single bottle retail price in GH₵
   packagingOptions: PackagingOption[];
   capColor: 'White' | 'Black';
@@ -24,7 +24,7 @@ export interface Product {
   accentColor: string; // Hex color e.g., #EF4329 or #512719
   description: string;
   longDescription?: string;
-  labels: string[]; // e.g., ['Home-Brewed', 'Serve Chilled', '250ml']
+  labels: string[]; // e.g., ['Home-Brewed', 'Serve Chilled', '350ml']
   image: string;
   featured?: boolean;
   tasteNotes?: string[];
@@ -49,7 +49,7 @@ export interface CustomerDetails {
   orderNotes?: string;
 }
 
-export interface CheckoutFormData extends CustomerDetails {}
+export interface CheckoutFormData extends CustomerDetails { }
 
 export interface OrderSummary {
   items: CartItem[];
@@ -73,4 +73,9 @@ export interface BrandConfig {
   displayPhoneAlt?: string;
   deliveryNote: string;
   pickupLocation: string;
+  websiteUrl: string;
+  domain: string;
+  seoTitle: string;
+  seoDescription: string;
+  ogImage: string;
 }
