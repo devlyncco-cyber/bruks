@@ -154,16 +154,17 @@ Sitemap: https://lobbodrinks.com/sitemap.xml
 ## 7. VERCEL DEPLOYMENT CONFIGURATION (`vercel.json`)
 
 Configured with:
-- **Clean URLs:** `cleanUrls: true`, `trailingSlash: false`.
-- **Canonical Redirect:** Automatically redirects `https://www.lobbodrinks.com/*` to `https://lobbodrinks.com/*` with permanent HTTP 301 status.
+- **CORS Headers:** `Access-Control-Allow-Origin: *` and `Access-Control-Allow-Methods: GET, HEAD, OPTIONS` applied to all routes, static assets (`/assets/*`), images (`/images/*`), manifests, and favicons. This ensures that whether loaded from apex (`lobbodrinks.com`) or subdomain (`www.lobbodrinks.com`), assets never trigger browser CORS blocks.
 - **Security Headers:**
   - `X-Content-Type-Options: nosniff`
   - `X-Frame-Options: SAMEORIGIN`
   - `X-XSS-Protection: 1; mode=block`
   - `Referrer-Policy: strict-origin-when-cross-origin`
   - `Permissions-Policy: camera=(), microphone=(), geolocation=()`
-- **Asset Caching:** 1-year immutable caching (`max-age=31536000, immutable`) for hashed `/assets/` and revalidation for images.
-- **SPA Rewrites:** All requests resolve to `/index.html` for client-side routing.
+- **Asset Caching:** 1-year immutable caching (`max-age=31536000, immutable`) for hashed `/assets/` and 24-hour caching with `stale-while-revalidate` for images.
+- **SPA Rewrites:** All path requests resolve to `/index.html` for client-side routing.
+- **Canonical Domain Redirect (Handled in Vercel Dashboard):**
+  In Vercel **Project Settings > Domains**, set `lobbodrinks.com` as the primary domain, and configure `www.lobbodrinks.com` with "Redirect to lobbodrinks.com". This executes at edge DNS level before page load and avoids redirect loops.
 
 ---
 

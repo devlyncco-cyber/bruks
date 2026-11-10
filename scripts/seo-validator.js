@@ -83,8 +83,11 @@ if (schemaMatch) {
 const vercelPath = path.resolve('vercel.json');
 assert(fs.existsSync(vercelPath), 'vercel.json exists');
 const vercelConfig = JSON.parse(fs.readFileSync(vercelPath, 'utf8'));
-assert(Array.isArray(vercelConfig.headers), 'vercel.json has security headers');
-assert(Array.isArray(vercelConfig.redirects), 'vercel.json has www redirect rule');
+assert(Array.isArray(vercelConfig.headers), 'vercel.json has security and CORS headers');
+assert(
+  vercelConfig.headers.some((h) => h.headers.some((k) => k.key === 'Access-Control-Allow-Origin')),
+  'vercel.json has Access-Control-Allow-Origin: * to prevent CORS blocks'
+);
 assert(Array.isArray(vercelConfig.rewrites), 'vercel.json has SPA rewrites rule');
 
 // 6. .env.example
