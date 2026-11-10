@@ -55,6 +55,8 @@ assert(indexHtml.includes('<link rel="canonical" href="https://lobbodrinks.com/"
 assert(indexHtml.includes('property="og:image" content="https://lobbodrinks.com/og-image.jpg"'), 'OpenGraph image set to og-image.jpg');
 assert(indexHtml.includes('name="twitter:card" content="summary_large_image"'), 'Twitter card set to summary_large_image');
 assert(indexHtml.includes('lang="en-GH"'), 'HTML lang set to en-GH for Ghanaian market');
+assert(indexHtml.includes('wedding drinks supplier Accra'), 'Keywords include wedding and event queries');
+assert(indexHtml.includes('drinks delivery East Legon'), 'Keywords include Accra local areas');
 
 // Validate JSON-LD Schema
 const schemaMatch = indexHtml.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
@@ -92,6 +94,35 @@ assert(Array.isArray(vercelConfig.rewrites), 'vercel.json has SPA rewrites rule'
 
 // 6. .env.example
 assert(fs.existsSync(path.resolve('.env.example')), '.env.example exists');
+
+// 7. Favicon & Search Engine Logo Compliance (Google SERP Requirements)
+const faviconIcoPath = path.resolve('public/favicon.ico');
+assert(fs.existsSync(faviconIcoPath) && fs.statSync(faviconIcoPath).size > 0, 'public/favicon.ico exists and has content');
+
+const favicon48Path = path.resolve('public/favicon-48x48.png');
+assert(fs.existsSync(favicon48Path) && fs.statSync(favicon48Path).size > 0, 'public/favicon-48x48.png (Google 48px square requirement) exists');
+
+const favicon96Path = path.resolve('public/favicon-96x96.png');
+assert(fs.existsSync(favicon96Path), 'public/favicon-96x96.png exists');
+
+const favicon192Path = path.resolve('public/favicon-192x192.png');
+assert(fs.existsSync(favicon192Path), 'public/favicon-192x192.png exists');
+
+const favicon512Path = path.resolve('public/favicon-512x512.png');
+assert(fs.existsSync(favicon512Path), 'public/favicon-512x512.png exists');
+
+const appleTouchIconPath = path.resolve('public/apple-touch-icon.png');
+assert(fs.existsSync(appleTouchIconPath), 'public/apple-touch-icon.png exists');
+
+assert(indexHtml.includes('href="/favicon.ico"'), 'index.html links to /favicon.ico');
+assert(indexHtml.includes('href="/favicon-48x48.png"'), 'index.html links to /favicon-48x48.png');
+assert(indexHtml.includes('href="/apple-touch-icon.png"'), 'index.html links to /apple-touch-icon.png');
+
+const faviconSvgContent = fs.readFileSync(path.resolve('public/favicon.svg'), 'utf8');
+assert(!faviconSvgContent.includes('<!--'), 'public/favicon.svg contains no developer comments');
+
+const logoSvgContent = fs.readFileSync(path.resolve('public/logo.svg'), 'utf8');
+assert(!logoSvgContent.includes('<!--'), 'public/logo.svg contains no developer comments');
 
 console.log(`\n========================================`);
 console.log(`SEO Validation Complete: ${passed} Passed, ${failed} Failed`);

@@ -38,6 +38,16 @@ export const FAQS: FaqItem[] = [
     answer:
       'Lobbo beverages are home-brewed without unnecessary artificial additives and must be strictly kept chilled below 5°C. For the best flavour, store them in your refrigerator or icebox and serve ice-cold.',
   },
+  {
+    question: 'Where does Lobbo Beverages deliver in Ghana?',
+    answer:
+      'We provide scheduled doorstep delivery across Greater Accra (including East Legon, Spintex, Tema, Airport Residential, Cantonments, Dzorwulu, Madina, and Achimota), as well as Koforidua and regional delivery arrangements across Ghana. Free pickup is also available in Accra / Koforidua.',
+  },
+  {
+    question: 'Can I order Lobbo drinks as an official drinks supplier for corporate offices in Ghana?',
+    answer:
+      'Absolutely. We supply corporate offices, executive boardrooms, and staff cafeteria fridges with recurring weekly or bi-weekly crate deliveries of chilled Lobbo Cous Cous and Bruks at discounted wholesale bundle rates.',
+  },
 ];
 
 export const FaqSection: React.FC = () => {

@@ -61,7 +61,7 @@
       ]
     },
     {
-      "source": "/(robots.txt|sitemap.xml|site.webmanifest|favicon.svg|logo.svg|og-image.jpg)",
+      "source": "/(robots.txt|sitemap.xml|site.webmanifest|favicon.*|apple-touch-icon.*|logo.*|og-image.jpg)",
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",

@@ -116,13 +116,16 @@ All schema markup is implemented using valid **JSON-LD** embedded directly in `<
 ## 5. LOCAL SEO STRATEGY FOR GHANA
 
 1. **Target Keyphrases Incorporated:**
-   - Primary: *Lobbo Beverages*, *beverages in Ghana*, *drinks in Ghana*, *buy beverages in Ghana*, *refreshing drinks*, *quality beverages in Ghana*.
-   - Local intent: *drinks supplier Accra*, *chilled drinks Ghana*, *home brewed drinks Accra*, *event drink crates Ghana*.
+   - **Primary Brand & Products:** *Lobbo Beverages*, *Lobbo Drinks*, *Lobbo Cous Cous*, *Lobbo Bruks*, *Cous Cous drink Ghana*, *Bruks beverage*.
+   - **High-Volume Commercial:** *Beverages in Ghana*, *drinks in Ghana*, *buy beverages in Ghana*, *quality beverages in Ghana*, *affordable drinks in Ghana*, *refreshing drinks*.
+   - **Artisanal & Home-Brewed:** *Home-brewed drinks Accra*, *locally brewed beverages Ghana*, *artisanal drinks Ghana*, *bottled drinks Ghana*, *chilled drinks Ghana*.
+   - **Weddings, Events & Bulk:** *Drinks for weddings Ghana*, *wedding drinks supplier Accra*, *party drinks crates Ghana*, *bulk drinks for events Accra*, *wholesale beverage supplier Ghana*, *corporate drinks supply Ghana*.
+   - **Local Delivery & Towns:** *Drinks delivery Accra*, *drinks delivery East Legon*, *drinks delivery Spintex*, *drinks delivery Tema*, *drinks delivery Koforidua*, *order drinks on WhatsApp Ghana*, *best chilled drinks Accra*.
 2. **Consistent NAP (Name, Address, Phone):**
    - Name: `Lobbo Beverages`
    - Phone: `+233 24 319 1039` / `+233 26 110 2751`
    - Pickup Locations: `Accra / Koforidua`
-   - Delivery Coverage: Greater Accra (East Legon, Spintex, Tema, etc.) and regional delivery across Ghana.
+   - Delivery Coverage: Greater Accra (East Legon, Spintex, Tema, Cantonments, Airport Residential) and regional delivery across Ghana.
 3. **Currency & Units:** Standardized to Ghana Cedis (`GH₵` / `GHS`) and metric bottle volume (`350ml`).
 
 ---
@@ -255,7 +258,7 @@ Follow these steps once deployed to Vercel:
 
 ---
 
-## 12. AUTOMATED SEO VALIDATION RESULTS
+## 12. AUTOMATED SEO & FAVICON VALIDATION RESULTS
 
 Ran automated validation via `scripts/seo-validator.js`:
 ```
@@ -278,6 +281,8 @@ Ran automated validation via `scripts/seo-validator.js`:
 ✓ PASS: OpenGraph image set to og-image.jpg
 ✓ PASS: Twitter card set to summary_large_image
 ✓ PASS: HTML lang set to en-GH for Ghanaian market
+✓ PASS: Keywords include wedding and event queries
+✓ PASS: Keywords include Accra local areas
 ✓ PASS: JSON-LD schema script found in index.html
 ✓ PASS: Schema @context is https://schema.org
 ✓ PASS: Schema @graph contains 7 entities
@@ -288,16 +293,59 @@ Ran automated validation via `scripts/seo-validator.js`:
 ✓ PASS: FAQPage schema present
 ✓ PASS: BreadcrumbList schema present
 ✓ PASS: vercel.json exists
-✓ PASS: vercel.json has security headers
-✓ PASS: vercel.json has www redirect rule
+✓ PASS: vercel.json has security and CORS headers
+✓ PASS: vercel.json has Access-Control-Allow-Origin: * to prevent CORS blocks
 ✓ PASS: vercel.json has SPA rewrites rule
 ✓ PASS: .env.example exists
+✓ PASS: public/favicon.ico exists and has content
+✓ PASS: public/favicon-48x48.png (Google 48px square requirement) exists
+✓ PASS: public/favicon-96x96.png exists
+✓ PASS: public/favicon-192x192.png exists
+✓ PASS: public/favicon-512x512.png exists
+✓ PASS: public/apple-touch-icon.png exists
+✓ PASS: index.html links to /favicon.ico
+✓ PASS: index.html links to /favicon-48x48.png
+✓ PASS: index.html links to /apple-touch-icon.png
+✓ PASS: public/favicon.svg contains no developer comments
+✓ PASS: public/logo.svg contains no developer comments
 
 ========================================
-SEO Validation Complete: 32 Passed, 0 Failed
+SEO Validation Complete: 45 Passed, 0 Failed
 ========================================
 ```
 
-Build status: `npm run build` completed with 0 errors in 1.27s.
+Build status: `npm run build` completed with 0 errors.
 Unit & logic test status: `node scripts/test-runner.js` passed all checks.
+
+---
+
+## 13. GOOGLE SEARCH FAVICON SPECIFICATION & FIX DETAILS
+
+### Why Google Search Did Not Display The Favicon Previously
+According to [Google Search Central Favicon Documentation](https://developers.google.com/search/docs/appearance/favicon-in-search):
+1. **Aspect Ratio Violation:** Google requires favicons to have a **1:1 square aspect ratio**. The previous `public/favicon.svg` used a wide rectangular viewbox (`220x100`), causing Google's favicon crawler (`Googlebot-Image`) to discard it.
+2. **Missing Multiples of 48px:** Googlebot explicitly looks for icons whose dimensions are multiples of 48px (e.g. `48x48`, `96x96`, `144x144`, `192x192`).
+3. **Missing Root `/favicon.ico`:** Googlebot-Image automatically probes `https://lobbodrinks.com/favicon.ico`. Without a physical `.ico` file, a 404 or index rewrite occurred, falling back to Google's generic globe icon.
+
+### Solution Applied
+1. **Engineered Vector & High-Res Square Assets:**
+   - `public/favicon.svg`: 512×512 circular emblem with warm Ghanaian cream background (`#FFF8EF`), Lobbo orange border (`#EF4329`), botanical twin leaves, and bold typography.
+   - `public/favicon.ico`: Standard multi-size ICO binary embedding 48×48, 32×32, and 16×16.
+   - `public/favicon-48x48.png`: Primary Google SERP target resolution.
+   - `public/favicon-96x96.png`, `public/favicon-144x144.png`, `public/favicon-192x192.png`, `public/favicon-512x512.png`.
+   - `public/apple-touch-icon.png`: 180×180 for iOS home screen bookmarks.
+2. **HTML `<head>` Declarations:**
+   Added standard multi-size tags in `index.html`:
+   ```html
+   <link rel="icon" href="/favicon.ico" sizes="48x48 32x32 16x16" />
+   <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+   <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+   ```
+3. **Robots & CORS Configuration:**
+   - `robots.txt` explicitly allows favicon crawling (`Allow: /favicon*`, `Allow: /apple-touch-icon*`).
+   - `vercel.json` provides `Access-Control-Allow-Origin: *` to prevent cross-origin fetch failures during image crawling.
+
 

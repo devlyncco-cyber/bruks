@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "node scripts/seo-validator.js && node scripts/test-runner.js",
+    "generate-favicons": "node scripts/generate-favicons.js"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
@@ -23,6 +25,7 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.2.1",
+    "sharp": "^0.35.5",
     "tailwindcss": "^4.3.5",
     "typescript": "^7.0.2",
     "vite": "^8.3.6"

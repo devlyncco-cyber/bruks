@@ -2,8 +2,9 @@ User-agent: *
 Allow: /
 Allow: /images/
 Allow: /assets/
-Allow: /logo.svg
-Allow: /favicon.svg
+Allow: /favicon*
+Allow: /apple-touch-icon*
+Allow: /logo*
 Disallow: /api/
 Disallow: /*?*checkout=*
 Crawl-delay: 1

@@ -36,7 +36,7 @@ export const ProductSection: React.FC = () => {
           </h2>
 
           <p className="text-base sm:text-lg text-[#512719]/80 font-normal leading-relaxed">
-            Two distinctive home-brewed recipes. Available in individual retail bottles or money-saving crates for events, offices, and celebrations.
+            Two distinctive home-brewed recipes crafted in Ghana. Available in individual retail bottles or money-saving crates for weddings, parties, offices, and everyday refreshment.
           </p>
         </div>
 

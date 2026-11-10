@@ -51,7 +51,7 @@ export const BulkSection: React.FC = () => {
           </h2>
 
           <p className="text-base sm:text-lg text-[#512719]/80 font-normal leading-relaxed">
-            Whether you want a single chilled bottle for yourself, a 6-pack for the weekend, or full wholesale crates for large events and stores, Lobbo has you covered.
+            Whether you want a single chilled bottle for yourself, a 6-pack for the weekend, or full wholesale drink crates for weddings, parties, corporate events, and retail stores in Ghana, Lobbo has you covered.
           </p>
         </div>
 
