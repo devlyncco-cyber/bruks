@@ -188,11 +188,10 @@ export const ProductQuickViewModal: React.FC = () => {
                         key={opt.id}
                         type="button"
                         onClick={() => setSelectedOption(opt)}
-                        className={`p-2 rounded-xl text-center border text-xs font-bold transition-all ${
-                          isSel
+                        className={`p-2 rounded-xl text-center border text-xs font-bold transition-all ${isSel
                             ? 'bg-[#EF4329] text-white border-[#EF4329] shadow-sm'
                             : 'bg-[#FFF8EF] text-[#512719] border-[#F2C7A9] hover:bg-[#F5E9D9]'
-                        }`}
+                          }`}
                       >
                         <div>{opt.shortName}</div>
                         <div className={`text-[10px] mt-0.5 ${isSel ? 'text-white' : 'text-[#EF4329]'}`}>
@@ -238,7 +237,7 @@ export const ProductQuickViewModal: React.FC = () => {
                     Quantity ({selectedOption.shortName}):
                   </span>
                   <span className="text-[10px] text-[#512719]/60 block">
-                    Type quantity or use +/-
+
                   </span>
                 </div>
                 <div className="flex items-center bg-white border border-[#F2C7A9] rounded-full p-1 shadow-sm focus-within:ring-2 focus-within:ring-[#EF4329]/40 focus-within:border-[#EF4329] transition-all">

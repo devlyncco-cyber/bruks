@@ -218,11 +218,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, initialType }
                     key={opt.id}
                     type="button"
                     onClick={() => setSelectedOption(opt)}
-                    className={`relative p-2.5 rounded-xl text-center border transition-all text-xs font-bold flex flex-col items-center justify-center ${
-                      isSelected
+                    className={`relative p-2.5 rounded-xl text-center border transition-all text-xs font-bold flex flex-col items-center justify-center ${isSelected
                         ? 'bg-[#EF4329] text-white border-[#EF4329] shadow-sm'
                         : 'bg-white text-[#512719] border-[#F2C7A9]/80 hover:bg-[#F5E9D9]'
-                    }`}
+                      }`}
                   >
                     {opt.popular && (
                       <span className="absolute -top-1.5 right-1.5 px-1.5 py-0.2 text-[8px] font-black uppercase rounded-full bg-[#512719] text-[#FFF8EF] shadow-sm">
@@ -274,7 +273,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, initialType }
                 Quantity ({selectedOption.shortName}):
               </span>
               <span className="text-[10px] text-[#512719]/60 block">
-                Type quantity or use +/-
+
               </span>
             </div>
             <div className="flex items-center gap-2.5">
@@ -320,11 +319,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, initialType }
             <button
               type="button"
               onClick={handleAddToCart}
-              className={`flex items-center justify-center gap-1.5 sm:gap-2 py-3 px-3 sm:px-4 rounded-full font-bold text-xs sm:text-sm border transition-all duration-200 shadow-sm active:scale-95 ${
-                isAdding
+              className={`flex items-center justify-center gap-1.5 sm:gap-2 py-3 px-3 sm:px-4 rounded-full font-bold text-xs sm:text-sm border transition-all duration-200 shadow-sm active:scale-95 ${isAdding
                   ? 'bg-[#512719] text-[#FFF8EF] border-[#512719]'
                   : 'bg-[#FFF8EF] hover:bg-[#F5E9D9] text-[#512719] border-[#F2C7A9] hover:border-[#EF4329]'
-              }`}
+                }`}
               aria-label={`Add ${quantity} of ${product.name} (${selectedOption.name}) to cart`}
             >
               <ShoppingBag className="w-4 h-4 text-[#EF4329] shrink-0" />
